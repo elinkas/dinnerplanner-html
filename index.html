@@ -4,7 +4,7 @@
   <head>
   	<script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
@@ -36,17 +36,38 @@
 				dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
 				anim id est laborum.</p> <br><br>
-			<!--<center><button id="createNewDinner" onclick="return show('ExampleView', 'Page1');" class="btn">Create New Dinner </button></center>-->
+	
 			<center><button id="createNewDinner" onclick="Page1()" class="btn">Create New Dinner</button></center>
 		</div>
-
+	</div>
+	<div class="container-fluid">
 		<div id="exampleView">
-			<div><center>
-				Number of guests: <span id="numberOfGuests"></span></center>
+			<div class="row">
+				<center><h1>Dinner planner</h1></center>
 			</div>
-			<div><center>
-          <button id="minusGuest" onclick="decreaseG()" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-				<button id="plusGuest" onclick="increaseG()" class="btn"><span class="glyphicon glyphicon-plus"></span></button></center>
+			<div class="row">
+				<div class="col-md-2" style="background-color:powderblue;">
+						<p id="guests"> Number of Guests: 0</p>
+						<button id="minusGuest" onclick="decreaseG();numberOfG();" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+				<button id="plusGuest" onclick="increaseG();numberOfG();" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+				<br><br>Dish name    Cost<br><br>
+				SEK 00.00<br><br>
+				<button id="Confirm" onclick="ngn funktion" class="btn">Confirm Dinner</button>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<b>Find a Dish </b><br>Enter Keyword     
+						<select name="All">
+							<option value="All">All</option>
+						  <option value="MainCourse">Main Dish</option>
+						  <option value="SideDish">Side Dish</option>
+						  <option value="Dessert">Dessert</option>
+						  <option value="Appetizer">Appetizer</option>
+						</select>
+						<button id="Search" onclick="ngn funktion" class="btn">Search</button>
+					</div><br>
+					<div class="row">hej</div>
+				</div>
 			</div>
 		</div>
 	</div>
