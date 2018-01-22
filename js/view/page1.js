@@ -4,6 +4,7 @@ var Page1 = function(){
 
 	var hide = function(){
 		document.getElementById("StartPage").style.display = "none";
+		document.getElementById("exampleView").style.display = "block";
 	}
 
 	hide();
