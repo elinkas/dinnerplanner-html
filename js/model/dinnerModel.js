@@ -3,101 +3,136 @@
 var numGuests = 0;
 var menu = [];
 var ingred = [];
+var menuNames = [];
+var priceList = [];
 
-
-
-//hols the number of guests
-var numberOfGuests = function(){
-	//console.log("hejsan " + numGuests);
-	document.getElementById("guests").innerHTML = "Number of Guests: " + numGuests;
-	return numGuests;
-}
-
-//holds the selected dishes from the chosen menu
-
-//selectedDishes(202);
 
 var confDinner = function(){
 	console.log("dinner is confirmed");
 }
 
 var DinnerModel = function() {
-
-
-	//var numGuests = 0;
  
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	//this.setNumberOfGuests(56);
-
-
+	// KLAR
 	this.setNumberOfGuests = function(num) {
-		var numberOfGuests = num;
-		console.log(numberOfGuests);
+		numGuests = num;
+		console.log(numGuests);
+		//console.log(numberOfGuests);
 
 	}
 	
+	// KLAR
 	this.getNumberOfGuests = function() {
-		return numberOfGuests;
-		//TODO Lab 1
-		// for every guest in numGuests
-		// return guest
+		console.log(numGuests);
+		return numGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
+	// KLAR
 	this.getSelectedDish = function(type) {
-		//TODO Lab 1
+		if(type == 'dessert'){
+			for(i=0; i<menu.length;i++){
+				if(menu[i] > 199){
+					var selected = menu[i];
+					console.log(selected);
+				}
+			}
+		}else if(type == 'main dish'){
+			for(i=0; i<menu.length; i++){
+				if(menu[i] < 200 && menu[i] > 99){
+					var selected = menu[i];
+				}
+			}
+		}else{
+			var selected = menu[i];
+		}
+
+		for(key in dishes){
+			if(dishes[key].id == selected) {
+				console.log(dishes[key]);
+				return dishes[key];
+			}
+		}
 	}
 
 	//Returns all the dishes on the menu.
+	// KLAR
 	this.getFullMenu = function() {
-		//TODO Lab 1
-		//for every dish in menu[]
-		// return dish
+		for (i=0; i<menu.length; i++){
+			var id2 = menu[i];
+			//console.log(id2);
+			for(key in dishes){
+				//console.log(dishes[key].id);
+				if(dishes[key].id == id2) {
+					menuNames.push(dishes[key].name);
+				}
+			}
+		}
+		//return menuNames;
+		return menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
+	// KLAR
 	this.getAllIngredients = function() {
-		//TODO Lab 1
-		for(i=0; i<ingred.length;i++){
+		for(i=0; i<menu.length;i++){
+			var selected = menu[i];
+			for(key in dishes){
+				if(dishes[key].id == selected) {
+					for(key in dishes[key].ingredients){
+						//console.log(dishes[key].ingredients);
+					}
+					return dishes[key].ingredients;
+				}
+			}
 		}
-		// for every element in menu[]
-		//return dish.ingredients
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
+	//KLAR
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 1
-		for(key in menu){
-			totPrice += key.price;
-			return totPrice;
+		var price = 0;
+		for(i=0; i<menu.length;i++){
+			var selected = menu[i];
+			for(key in dishes){
+				if(dishes[key].id == selected) {
+					ingredList=dishes[key].ingredients;
+					//for(key in dishes[key].ingredients){
+						//console.log("hej");
+						for(i=0; i<ingredList.length;i++){
+							//console.log(ingredList[i].price);
+							price += ingredList[i].price;
+						}
+						//var priceList=dishes[key].ingredients;
+					//}
+					//return price;
+				}
+			}
 		}
-			var newData = json_data.filter(function (entry){
-              if(entry.id == id){
-
-              }
-            });
-			//matcha id:t med elementet
-			//plocka ut alla price-element ur ingredients-listan
+		//console.log(price);
+		return price;
+	
 	}
 
-	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
-	//it is removed from the menu and the new one added.
+	//KLAR
 	this.addDishToMenu = function(id) {
 		var result = dishes.filter(function( element ) {
 		  if(element.id == id){
-		  	menu.push(element);
+		  	menu.push(id);
+		  	//console.log(menu);
 		  }
-		  console.log('id');
 		});
 	}
 
 	//Removes dish from menu
+	// KLAR
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 1
 		for(i=0 ; i<menu.length; i++){
 			if (menu[i] == id){
+				//console.log(i);
 				menu.splice(i,1);
 			}
 		}
@@ -386,4 +421,32 @@ var DinnerModel = function() {
 		}
 	];
 
+	this.setNumberOfGuests(4);
+	//this.getNumberOfGuests();
+	this.addDishToMenu(3);
+	this.addDishToMenu(102);
+	//this.addDishToMenu(200);
+	//this.getSelectedDish('dessert');
+	this.getFullMenu();
+	//this.getTotalMenuPrice();
+	this.removeDishFromMenu(3);
+	this.getFullMenu();
+	this.getFullMenu();
+	//this.removeDishFromMenu(3);
+	//this.getFullMenu();
+	this.getAllIngredients();
+	this.getTotalMenuPrice();
+
+}
+
+var numberOfGuests = function(){
+	//console.log("hejsan " + numGuests);
+	document.getElementById("guests").innerHTML = "Number of Guests: " + numGuests;
+	return numGuests;
+}
+
+var selectedDishes = function(){
+	for (i=0; i<menu.length; i++){
+		return menu[i].name;
+	}
 }

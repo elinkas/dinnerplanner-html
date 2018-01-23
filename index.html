@@ -29,6 +29,8 @@
         	document.getElementById("brie").style.display = "none";
         	document.getElementById("myDinner").style.display = "none";
         	document.getElementById("menuList").style.display = "none";
+        	
+	    	document.getElementById("myText").innerHTML = numberOfGuests();
         }
     </script>
   </head>
@@ -60,8 +62,9 @@
 			<div class="row">
 				<div id="left">
 					<div class="col-md-2">
-						<p id="guests"> Number of Guests: </p> <br>
-						<div><span id="numberOfGuests"></span></div><br>
+						<p id="guests"> Number of Guests:  
+						<span id="myText"></span></p>
+						<br>
 						<button id="minusGuest" onclick="decreaseG();numberOfGuests();" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
 						<button id="plusGuest" onclick="increaseG();numberOfGuests();" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 						<br><br>Dish name    Cost<br><br>
