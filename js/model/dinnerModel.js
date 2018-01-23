@@ -12,26 +12,18 @@ var confDinner = function(){
 }
 
 var DinnerModel = function() {
- 
-	//TODO Lab 1 implement the data structure that will hold number of guest
-	// and selected dishes for the dinner menu
-
-	// KLAR
+ 	
+ 	//Set number of guests.
 	this.setNumberOfGuests = function(num) {
 		numGuests = num;
-		console.log(numGuests);
-		//console.log(numberOfGuests);
-
 	}
 	
-	// KLAR
+	//Return of guests.
 	this.getNumberOfGuests = function() {
-		console.log(numGuests);
 		return numGuests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
-	// KLAR
+	//Return the dish that is on the menu for selected type.
 	this.getSelectedDish = function(type) {
 		if(type == 'dessert'){
 			for(i=0; i<menu.length;i++){
@@ -58,32 +50,26 @@ var DinnerModel = function() {
 		}
 	}
 
-	//Returns all the dishes on the menu.
-	// KLAR
+	//Return all the dishes on the menu.
 	this.getFullMenu = function() {
 		for (i=0; i<menu.length; i++){
 			var id2 = menu[i];
-			//console.log(id2);
 			for(key in dishes){
-				//console.log(dishes[key].id);
 				if(dishes[key].id == id2) {
 					menuNames.push(dishes[key].name);
 				}
 			}
 		}
-		//return menuNames;
 		return menu;
 	}
 
-	//Returns all ingredients for all the dishes on the menu.
-	// KLAR
+	//Return all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		for(i=0; i<menu.length;i++){
 			var selected = menu[i];
 			for(key in dishes){
 				if(dishes[key].id == selected) {
 					for(key in dishes[key].ingredients){
-						//console.log(dishes[key].ingredients);
 					}
 					return dishes[key].ingredients;
 				}
@@ -91,8 +77,7 @@ var DinnerModel = function() {
 		}
 	}
 
-	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
-	//KLAR
+	//Return the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var price = 0;
 		for(i=0; i<menu.length;i++){
@@ -100,39 +85,28 @@ var DinnerModel = function() {
 			for(key in dishes){
 				if(dishes[key].id == selected) {
 					ingredList=dishes[key].ingredients;
-					//for(key in dishes[key].ingredients){
-						//console.log("hej");
-						for(i=0; i<ingredList.length;i++){
-							//console.log(ingredList[i].price);
-							price += ingredList[i].price;
-						}
-						//var priceList=dishes[key].ingredients;
-					//}
-					//return price;
+					for(i=0; i<ingredList.length;i++){
+						price += ingredList[i].price;
+					}
 				}
 			}
 		}
-		//console.log(price);
 		return price;
-	
 	}
 
-	//KLAR
+	//Add dish to menu.
 	this.addDishToMenu = function(id) {
 		var result = dishes.filter(function( element ) {
 		  if(element.id == id){
 		  	menu.push(id);
-		  	//console.log(menu);
 		  }
 		});
 	}
 
-	//Removes dish from menu
-	// KLAR
+	//Remove dish from menu.
 	this.removeDishFromMenu = function(id) {
 		for(i=0 ; i<menu.length; i++){
 			if (menu[i] == id){
-				//console.log(i);
 				menu.splice(i,1);
 			}
 		}
@@ -140,7 +114,7 @@ var DinnerModel = function() {
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
+	//if you don't pass any filter all the dishes will be returned.
 	this.getAllDishes = function (type,filter) {
 	  return dishes.filter(function(dish) {
 		var found = true;
@@ -160,7 +134,7 @@ var DinnerModel = function() {
 	  });	
 	}
 
-	//function that returns a dish of specific ID
+	//return a dish of specific ID.
 	this.getDish = function (id) {
 	  for(key in dishes){
 			if(dishes[key].id == id) {
@@ -421,26 +395,20 @@ var DinnerModel = function() {
 		}
 	];
 
-	this.setNumberOfGuests(4);
+	//this.setNumberOfGuests(4);
 	//this.getNumberOfGuests();
-	this.addDishToMenu(3);
-	this.addDishToMenu(102);
-	//this.addDishToMenu(200);
+	//this.addDishToMenu(3);
+	//this.addDishToMenu(102);
 	//this.getSelectedDish('dessert');
-	this.getFullMenu();
-	//this.getTotalMenuPrice();
-	this.removeDishFromMenu(3);
-	this.getFullMenu();
-	this.getFullMenu();
-	//this.removeDishFromMenu(3);
 	//this.getFullMenu();
-	this.getAllIngredients();
-	this.getTotalMenuPrice();
+	//this.getTotalMenuPrice();
+	//this.removeDishFromMenu(3);
+	//this.getAllIngredients();
+	//this.getTotalMenuPrice();
 
 }
 
 var numberOfGuests = function(){
-	//console.log("hejsan " + numGuests);
 	document.getElementById("guests").innerHTML = "Number of Guests: " + numGuests;
 	return numGuests;
 }
