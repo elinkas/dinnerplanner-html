@@ -26,6 +26,9 @@
     <script type="text/javascript">
         function redirect() {
         	document.getElementById("exampleView").style.display = "none";
+        	document.getElementById("brie").style.display = "none";
+        	document.getElementById("myDinner").style.display = "none";
+        	document.getElementById("menuList").style.display = "none";
         }
     </script>
   </head>
@@ -43,7 +46,7 @@
 				incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
 				exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</center><br><br>
-			<center><button id="createNewDinner" onclick="Page1()" class="btn">Create New Dinner</button></center>
+			<center><button id="createNewDinner" onclick="toggleVisibility('StartPage');hideIt('brie');Page1('exampleView')" class="btn">Create New Dinner</button></center>
 		</div>
 	</div>
 
@@ -55,31 +58,191 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-2">
-					<p id="guests"> Number of Guests: 0</p>
-					<button id="minusGuest" onclick="decreaseG();numberOfG();" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-					<button id="plusGuest" onclick="increaseG();numberOfG();" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-				<br><br>Dish name    Cost<br><br>
-				SEK 00.00<br><br>
-				<button id="Confirm" onclick="ngn funktion" class="btn">Confirm Dinner</button>
+				<div id="left">
+					<div class="col-md-2">
+						<p id="guests"> Number of Guests: </p> <br>
+						<div><span id="numberOfGuests"></span></div><br>
+						<button id="minusGuest" onclick="decreaseG();numberOfGuests();" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+						<button id="plusGuest" onclick="increaseG();numberOfGuests();" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+						<br><br>Dish name    Cost<br><br>
+						SEK 00.00<br><br>
+						<button id="ConfirmDinner" onclick="hideIt('StartPage');hideIt('imageList');hideIt('menuList');hideIt('brie');viewIt('myDinner');confDinner();" class="btn">Confirm Dinner</button>
+					</div>
 				</div>
-				<div class="col-md-10">
-					<div class="row">
-						<b>Find a Dish </b><br>Enter Keyword     
-						<select name="All">
-							<option value="All">All</option>
-						  <option value="MainCourse">Main Dish</option>
-						  <option value="SideDish">Side Dish</option>
-						  <option value="Dessert">Dessert</option>
-						  <option value="Appetizer">Appetizer</option>
-						</select>
-						<button id="Search" onclick="ngn funktion" class="btn">Search</button>
-					</div><br>
-					<div class="row">hej</div>
+				
+
+				<!-- rad  72-96 är 156-180 typ -->
+				<div id="brie">
+					<div class="col-md-5">
+						<center><h1 style="font-family:comic sans ms;"><b>BAKED BRIE</b></h1></center><br>
+						<img src="./images/bakedbrie.jpg" alt="Baked brie" height="200" width="200"><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+						<button id="BackToSearch" onclick="hideIt('brie');viewIt('imageList')" class="btn">Back to search</button><br>
+						<br>
+						<center><h1 style="font-family:comic sans ms;"><b>PREPARATION</b></h1></center><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+					<div class="col-md-5" style="background-color:lightyellow;">
+						<div id="ingredients"><br><br>
+							<p style="font-family:comic sans ms;"><b>INGREDIENTS FOR X PEOPLE</b></p></center><br>
+							<ul style="list-style-type:none">
+							  <li>Coffee</li>
+							  <li>Tea</li>
+							  <li>Milk</li>
+							</ul>
+							<!-- on click = addDishToMenu() -->
+							<button id="addToMenu" onclick="toggleVisibility('brie');toggleVisibility('imageList')" class="btn">Add to Menu</button>
+						</div>
+					</div>
 				</div>
+
+				<div id="menuList"><br><br>
+					<div class="col-md-2">
+						<img src="./images/bakedbrie.jpg" alt="Baked brie" height="200" width="200"><br><br>
+						<img src="./images/icecream.jpg" alt="Ice cream" height="200" width="200"><br>
+					</div>
+					<div class="col-md-4">
+						<center><h1 style="font-family:comic sans ms;"><b>BAKED BRIE</b></h1></center><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+
+						<center><h1 style="font-family:comic sans ms;"><b>ICE CREAM</b></h1></center><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+
+					</div>
+					<div class="col-md-4" style="background-color:lightyellow;">
+						<div id="preparation">
+							<center><h1 style="font-family:comic sans ms;"><b>PREPARATION</b></h1></center><br>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+							exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							<br>
+						</div>
+						<div id="preparation">
+							<center><h1 style="font-family:comic sans ms;"><b>PREPARATION</b></h1></center><br>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+							exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+					</div>
+
+				</div>
+
+
+				<!--<div id="imageList"> -->
+					<div class="col-md-10">
+						<div class="row">
+
+							<div id="imageList">
+								<b>Find a Dish </b><br>
+								<div class="search">
+								    <input type="text" class="searchTerm" placeholder="Enter key words">
+								      <!--<button type="submit" class="searchButton">
+								        <i class="fa fa-search"></i>
+								     </button>-->    
+									<select name="All">
+									  <option value="All">All</option>
+									  <option value="MainCourse">Main Dish</option>
+									  <option value="SideDish">Side Dish</option>
+									  <option value="Dessert">Dessert</option>
+									  <option value="Appetizer">Appetizer</option>
+									</select>
+									<button id="Search" onclick="ngn funktion" class="btn">Search</button>
+								</div><br>
+								<div class="row"> 
+									<figure><center>
+										<img src="./images/bakedbrie.jpg" alt="Baked Brie" width="124" height="70" onclick="toggleVisibility('imageList');toggleVisibility('brie')">
+										<figcaption>Baked Brie</figcaption>
+										<img src="./images/toast.jpg" alt="Toast" width="70" height="70">
+										<figcaption>Toast</figcaption>
+										<img src="./images/icecream.jpg" alt="Ice Cream" width="70" height="70">
+										<figcaption>Ice Cream</figcaption>
+										<img src="./images/meatballs.jpg" alt="Meatballs" width="70" height="70">
+										<figcaption>Meatballs</figcaption>
+										<img src="./images/sourdough.jpg" alt="Sourdough" width="70" height="70">
+										<figcaption>Sourdough</figcaption>
+									</center></figure>
+								</div>
+							</div>
+
+							<div id="myDinner"> 
+								<div id="dinnerBar">
+									<center><h3 style="font-family:comic sans ms;"><b>My dinner: 3 people</b></h3>
+									<button id="GoBack" onclick="hideIt('myDinner');viewIt('imageList');hideIt('menuList')" class="btn">Go back and edit dinner</button></center> <br>
+								</div>
+
+								<div id="dinnerImages">
+								        <img src="./images/toast.jpg" width="100px" height="100px">
+								        <div class="caption">20 kr</div>
+								        <img src="./images/icecream.jpg" width="100px" height="100px"> 
+								        <div class="caption">50 kr</div>
+								        <img src="./images/bakedbrie.jpg" width="124" height="70">
+								        <div class="caption">30 kr</div>
+								        Total: 100 kr
+										<br><br>
+								</div>
+								<div id="recipeButton">
+									<center><button id="printRecipe" onclick="viewIt('dinnerBar');hideIt('dinnerImages');hideIt('recipeButton');viewIt('menuList')" class="btn">Print Full Recipe</button></center>
+								</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
 			</div>
 		</div>
 	</div>
+
+		<!-- Baked brie vi har en left och en left2 div, vi måste flytta ihop dem-
+	<div class="container-fluid">
+		<div id="bakedbrie">
+			<div class="row">
+				<div id="left2">
+					<div class="col-md-2">
+						<p id="guests"> Number of Guests: 0</p>
+						<button id="minusGuest" onclick="decreaseG();numberOfGuests();" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+						<button id="plusGuest" onclick="increaseG();numberOfGuests();" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+						<br><br>Dish name    Cost<br><br>
+						SEK 00.00<br><br>
+						<button id="ConfirmDinner" onclick="hideIt();confDinner()" class="btn">Confirm Dinner</button>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<center><h1 style="font-family:comic sans ms;"><b>BAKED BRIE</b></h1></center><br>
+					<img src="./images/bakedbrie.jpg" alt="Baked brie" height="200" width="200"><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+					<button id="Confirm" onclick="ngn funktion" class="btn">Back to search</button><br>
+					<br>
+					<center><h1 style="font-family:comic sans ms;"><b>PREPARATION</b></h1></center><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</div>
+				<div class="col-md-5" style="background-color:lightyellow;">
+					<div id="ingredients"><br><br>
+						<p style="font-family:comic sans ms;"><b>INGREDIENTS FOR X PEOPLE</b></p></center><br>
+						<ul style="list-style-type:none">
+						  <li>Coffee</li>
+						  <li>Tea</li>
+						  <li>Milk</li>
+						</ul>
+						<! on click = addDishToMenu() 
+						<button id="addToMenu" onclick="toggleVisibility('bakedbrie');toggleVisibility('left');toggleVisibility('imageList')" class="btn">Add to Menu</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
     
     <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
     <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> -->

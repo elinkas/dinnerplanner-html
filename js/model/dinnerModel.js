@@ -1,27 +1,45 @@
 //DinnerModel Object constructor
+
+var numGuests = 0;
+var menu = [];
+var ingred = [];
+
+
+
+//hols the number of guests
+var numberOfGuests = function(){
+	//console.log("hejsan " + numGuests);
+	document.getElementById("guests").innerHTML = "Number of Guests: " + numGuests;
+	return numGuests;
+}
+
+//holds the selected dishes from the chosen menu
+
+//selectedDishes(202);
+
+var confDinner = function(){
+	console.log("dinner is confirmed");
+}
+
 var DinnerModel = function() {
 
-	var menu = [];
-	var ingred = [];
+
+	//var numGuests = 0;
  
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	console.log("1");
+	//this.setNumberOfGuests(56);
+
 
 	this.setNumberOfGuests = function(num) {
-
-		console.log("3");
-
-		//TODO Lab 1
-		//koppla id=minusGuest & id=plusguest
-		//var mGuest = document.getElementbyId(“minusGuest”);
-		//var pGuest = document.getElementbyId(“plusGuest”); 
-		//console.log("hej");
+		var numberOfGuests = num;
+		console.log(numberOfGuests);
 
 	}
 	
 	this.getNumberOfGuests = function() {
+		return numberOfGuests;
 		//TODO Lab 1
 		// for every guest in numGuests
 		// return guest
@@ -55,11 +73,6 @@ var DinnerModel = function() {
 			totPrice += key.price;
 			return totPrice;
 		}
-
-
-
-
-
 			var newData = json_data.filter(function (entry){
               if(entry.id == id){
 
@@ -72,11 +85,12 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		for(key in dishes){
-			if(dishes[key].id == id) {
-				menu.push(dishes[key]);
-			}
-		}
+		var result = dishes.filter(function( element ) {
+		  if(element.id == id){
+		  	menu.push(element);
+		  }
+		  console.log('id');
+		});
 	}
 
 	//Removes dish from menu
