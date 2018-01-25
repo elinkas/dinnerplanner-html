@@ -1,5 +1,4 @@
 //DinnerModel Object constructor
-
 var numGuests = 0;
 var menu = [];
 var ingred = [];
@@ -57,10 +56,11 @@ var DinnerModel = function() {
 			for(key in dishes){
 				if(dishes[key].id == id2) {
 					menuNames.push(dishes[key].name);
+					console.log(menuNames);
 				}
 			}
 		}
-		return menu;
+		return menuNames;
 	}
 
 	//Return all ingredients for all the dishes on the menu.
@@ -91,7 +91,8 @@ var DinnerModel = function() {
 				}
 			}
 		}
-		return price;
+		console.log(price*numGuests);
+		return price*numGuests;
 	}
 
 	//Add dish to menu.
@@ -395,16 +396,14 @@ var DinnerModel = function() {
 		}
 	];
 
-	//this.setNumberOfGuests(4);
+	//this.setNumberOfGuests(1);
 	//this.getNumberOfGuests();
-	//this.addDishToMenu(3);
-	//this.addDishToMenu(102);
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();
-	//this.getTotalMenuPrice();
-	//this.removeDishFromMenu(3);
 	//this.getAllIngredients();
 	//this.getTotalMenuPrice();
+	//this.addDishToMenu(3);
+	//this.removeDishFromMenu(3);
 
 }
 
