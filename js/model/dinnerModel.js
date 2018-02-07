@@ -1,5 +1,4 @@
 //DinnerModel Object constructor
-var numGuests = 0;
 var menu = [];
 var ingred = [];
 var menuNames = [];
@@ -14,13 +13,18 @@ var DinnerModel = function() {
  	
  	//Set number of guests.
 	this.setNumberOfGuests = function(num) {
+		console.log(num);
 		numGuests = num;
+		return numGuests;
 	}
 	
 	//Return of guests.
 	this.getNumberOfGuests = function() {
-		return numGuests;
+		console.log("hej2");
+		return ;
 	}
+
+	//return this.getNumberOfGuests();
 
 	//Return the dish that is on the menu for selected type.
 	this.getSelectedDish = function(type) {
@@ -131,6 +135,7 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
+		console.log("hej1");
 	  	return dish.type == type && found;
 	  });	
 	}
@@ -396,7 +401,7 @@ var DinnerModel = function() {
 		}
 	];
 
-	//this.setNumberOfGuests(1);
+	this.setNumberOfGuests(1);
 	//this.getNumberOfGuests();
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();

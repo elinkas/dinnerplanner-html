@@ -12,22 +12,26 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */ 
-var ExampleView = function (container, model) {
+var AllDishesView = function (container, model) {
 	
 
-	hideIt("sideBar");
-	//this.startButton = container.find("#startButton");
+	var allDishes = model.getAllDishes('dessert');
+
+	for(dish in allDishes){
+		var img = allDishes[dish].image;
+
+		//var a = document.createElement("img");
+		//a.src = "images/" + img + "";
+
+		//var div = "<div></div>";
+		//var img = document.createElement("<img src="images/" + img + "height="100" width="100">"");
+		//div.appendChild(img);
 
 
-	document.getElementById("startButton").addEventListener('click', function(){		
-		var a = document.getElementById("startPage");
-		a.style.display = 'none'; viewIt("sideBar");}, false);
+		document.getElementById("startPage").innerHTML+= ('<img src="images/' + img + '">');
+	}
+	// loopa igenom alla maträtter, appenda html-element till den??? bootstrap-columner osv
 
-	// redirecta till allDishesView
-	 for (key in model.dishes){
-	 	console.log(123);
-	 }
-	 console.log(456);
 
 	
 }
