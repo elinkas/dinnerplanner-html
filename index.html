@@ -11,17 +11,50 @@
 
   </head>
   <body>
-	<div class="container">
-		<h1><center>Dinner planner</center></h1>
-		<div id="sideBar">
-			<div>
-				Number of guests: <span id="numberOfGuests"></span>
-			</div>
-			<div>
-          		<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-			</div>
+	<div class="container-fluid">
+		<div class="row" style="background-color:lightgray;">
+			<h1><center>Dinner planner</center></h1>
 		</div>
+			<div class="col-md-2" style="background-color:lightblue;">
+				<div id="sideBar">
+					<div>
+						Number of guests: <span id="numberOfGuests"></span>
+					</div>
+
+					<div>
+		          		<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+						<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+					</div>
+				</div>
+			</div>
+			<div class="search">
+				<div class ="col-md-10">
+					<div id="selectDish">
+						<div class="row" style="background-color:yellow;">
+							<form id ="searchDish"> Enter key words <input type="text" name="input">
+								<input type="button" onclick="searchView.searchKeyWord('dessert');" value="submit">
+							</form>
+							<b>Find a Dish </b><br>
+							<div class="search">
+								<input type="text" class="searchTerm" placeholder="Enter key words">  
+								<select name="All">
+									  <option value="All">All</option>
+									  <option value="MainCourse">Main Dish</option>
+									  <option value="SideDish">Side Dish</option>
+									  <option value="Dessert">Dessert</option>
+									  <option value="Appetizer">Appetizer</option>
+									</select>
+									<button id="Search" onclick="getNumberOfGuests()" class="btn">Search</button>
+							</div><br>
+						</div>
+					</div>
+					<!-- lista på alla maträtter osv ska in hit -->
+					<div class="row" style="background-color:green;">
+						<div id="main"><p>hej</p>
+						</div>
+					</div>
+				</div>
+			</div>
 	</div>
 
 	<div id="startPage">
@@ -33,9 +66,6 @@
 		</center>
 	</div>
 
-	<div class="search">
-		<form id ="searchDish"> Enter key words <input type="text" name="input">
-			<input type="button" onclick="searchView.searchKeyWord(input);" value="submit">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -45,12 +75,15 @@
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
+	<script src="js/view/startView.js"></script>
 	<script src="js/view/sidebarView.js"></script>
-	<script src="js/controller.js"></script>
 	<script src="js/view/allDishesView.js"></script>
 	<script src="js/view/oneDishView.js"></script>
 	<script src="js/view/menuView.js"></script>
+	<script src="js/view/searchView.js"></script>
+	<script src="js/controllers/sidebarController.js"></script>
+	<script src="js/controllers/startViewController.js"></script>
+	<script src="js/view/mainView.js"></script>
 	<!-- TODO: Here you should include JS code for your other views -->
   </body>
 </html>

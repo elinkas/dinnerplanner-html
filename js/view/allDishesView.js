@@ -30,6 +30,13 @@ var AllDishesView = function (container, model) {
 
 		document.getElementById("startPage").innerHTML+= ('<img src="images/' + img + '">');
 	}
+
+
+	this.hide = function() {
+		container.hide()
+		// var a = document.getElementById("AllDishesView");
+		// a.style.display = "none";
+	}
 	// loopa igenom alla maträtter, appenda html-element till den??? bootstrap-columner osv
 
 

@@ -12,21 +12,25 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */ 
-var ExampleView = function (container, model) {
+var StartView = function (container, model) {
 	
-
-	hideIt("sideBar");
-	//this.startButton = container.find("#startButton");
+	this.startButton = container.find("#startButton");
 
 
-	document.getElementById("startButton").addEventListener('click', function(){		
-		var a = document.getElementById("startPage");
-		a.style.display = 'none'; viewIt("sideBar");}, false);
+	// document.getElementById("startButton").addEventListener('click', function(){
+	// console.log("Hi")		
+	// 	var a = document.getElementById("startPage");
+	// 	a.style.display = 'none'; viewIt("sideBar");}, false);
 
 	// redirecta till allDishesView
 	 for (key in model.dishes){
 	 	console.log(123);
 	 }
+
+	 this.hide = function() {
+		var a = document.getElementById("startPage");
+		a.style.display = "none";
+	}
 	 console.log(456);
 
 	

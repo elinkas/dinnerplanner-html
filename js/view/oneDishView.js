@@ -14,6 +14,9 @@
  */ 
 var OneDishView = function (container, model) {
 	
-	
+	this.hide = function() {
+		// var a = document.getElementById("OneDishView");
+		// a.style.display = "none";
+	}
 }
  

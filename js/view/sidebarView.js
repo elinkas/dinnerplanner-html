@@ -50,11 +50,20 @@ var SidebarView = function (container, model) {
 	numGuests = model.getNumberOfGuests();
 	numberOfGuests.html(numGuests); 
 
+	this.hide = function() {
+		var a = document.getElementById("sideBar");
+		a.style.display = "none";
+	}
+
+	this.show = function(){
+		var a = document.getElementById("sideBar");
+		a.style.display = "block";	
+	}
+
 	/**
 	 * Here we use @var {jQuery object} numberOfGuests that is a reference to <span>
 	 * in our view to dynamically set it's value to "Hello World".
 	 */
-	//numberOfGuests.html("numGuests");
 	
 }
  

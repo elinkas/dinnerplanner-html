@@ -1,0 +1,16 @@
+//var numGuests = 0;
+//ExampleViewController Object constructor
+
+var SidebarController = function(view, model ) {
+
+ view.plusButton.click(function(){
+ model.setNumberOfGuests(model.getNumberOfGuests() + 1);
+ });
+
+ view.minusButton.click(function(){
+ model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+ });
+
+}
+
+

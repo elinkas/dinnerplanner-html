@@ -15,8 +15,19 @@
 var SearchView = function (container, model) {
 	
 	var searchKeyWord = function (input){
-		var type = document.getElementById("searchDish").submit();
+		var type = document.getElementById("selectDish").submit();
 		console.log(type);
+	}
+
+
+	this.hide = function(){
+		var a = document.getElementById("selectDish");
+		a.style.display = "none";
+	}
+
+	this.show = function(){
+		var a = document.getElementById("selectDish");
+		a.style.display = "block";	
 	}
 }
  
