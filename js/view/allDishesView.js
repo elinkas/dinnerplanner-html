@@ -1,6 +1,6 @@
-/** ExampleView Object constructor
+/** AllDishesView Object constructor
  * 
- * This object represents the code for one specific view (in this case the Example view). 
+ * This object represents the code for AllDishesView. 
  * 
  * It is responsible for:
  * - constructing the view (e.g. if you need to create some HTML elements procedurally) 

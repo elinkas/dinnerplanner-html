@@ -1,89 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dinner Planner</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
-  </head>
-  <body>
-	<div class="container-fluid">
-		<div class="row" style="background-color:lightgray;">
-			<h1><center>Dinner planner</center></h1>
-		</div>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dinner Planner</title>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	</head>
+	<body>
+		<!-- Page Head -->
+		<div class="container-fluid">
+			<div class="row" style="background-color:lightgray;">
+				<h1><center>Dinner planner</center></h1>
+			</div>
+			<!-- Start Page -->
+			<div id="startPage">
+				<center><br><br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor
+					incididunt ut labore et dolore magna aliqua. <br>Ut enim ad minim veniam, quis nostrud
+				exercitation ullamco laboris nisi ut <br>aliquip ex ea commodo consequat.</p><br>
+				<button id="startButton">Create new dinner</button>
+				</center>
+			</div>
+			<!-- Side Bar -->
 			<div class="col-md-2" style="background-color:lightblue;">
 				<div id="sideBar">
 					<div>
 						Number of guests: <span id="numberOfGuests"></span>
 					</div>
-
 					<div>
-		          		<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+						<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
 						<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 					</div>
 				</div>
 			</div>
+			<!-- Search Bar -->
 			<div class="search">
 				<div class ="col-md-10">
 					<div id="selectDish">
 						<div class="row" style="background-color:yellow;">
 							<form id ="searchDish"> Enter key words <input type="text" name="input">
-								<input type="button" onclick="searchView.searchKeyWord('dessert');" value="submit">
-							</form>
-							<b>Find a Dish </b><br>
-							<div class="search">
-								<input type="text" class="searchTerm" placeholder="Enter key words">  
-								<select name="All">
-									  <option value="All">All</option>
-									  <option value="MainCourse">Main Dish</option>
-									  <option value="SideDish">Side Dish</option>
-									  <option value="Dessert">Dessert</option>
-									  <option value="Appetizer">Appetizer</option>
-									</select>
-									<button id="Search" onclick="getNumberOfGuests()" class="btn">Search</button>
-							</div><br>
-						</div>
-					</div>
-					<!-- lista på alla maträtter osv ska in hit -->
-					<div class="row" style="background-color:green;">
-						<div id="main"><p>hej</p>
-						</div>
+							<input type="button" onclick="searchView.searchKeyWord('dessert');" value="submit">
+						</form>
+						<b>Find a Dish </b><br>
+						<div class="search">
+							<input type="text" class="searchTerm" placeholder="Enter key words">
+							<select name="All">
+								<option value="All">All</option>
+								<option value="MainCourse">Main Dish</option>
+								<option value="SideDish">Side Dish</option>
+								<option value="Dessert">Dessert</option>
+								<option value="Appetizer">Appetizer</option>
+							</select>
+							<button id="Search" onclick="getNumberOfGuests()" class="btn">Search</button>
+						</div><br>
 					</div>
 				</div>
+				<!-- TODO: List of dishes -->
+				<div class="row" style="background-color:green;">
+					<div id="main"><p>hej</p>
+				</div>
 			</div>
+		</div>
 	</div>
-
-	<div id="startPage">
-		<center><br><br>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>sed do eiusmod tempor 
-				incididunt ut labore et dolore magna aliqua. <br>Ut enim ad minim veniam, quis nostrud 
-				exercitation ullamco laboris nisi ut <br>aliquip ex ea commodo consequat.</p><br>
-			<button id="startButton">Create new dinner</button>
-		</center>
-	</div>
-
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-	<!-- The application JavaScript code -->
-	<script src="js/app.js"></script>
-	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/startView.js"></script>
-	<script src="js/view/sidebarView.js"></script>
-	<script src="js/view/allDishesView.js"></script>
-	<script src="js/view/oneDishView.js"></script>
-	<script src="js/view/menuView.js"></script>
-	<script src="js/view/searchView.js"></script>
-	<script src="js/controllers/sidebarController.js"></script>
-	<script src="js/controllers/startViewController.js"></script>
-	<script src="js/view/mainView.js"></script>
-	<!-- TODO: Here you should include JS code for your other views -->
-  </body>
+</div>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<!-- The application JavaScript code -->
+<script src="js/app.js"></script>
+<script src="js/model/dinnerModel.js"></script>
+<script src="js/view/startView.js"></script>
+<script src="js/controllers/startViewController.js"></script>
+<script src="js/view/sidebarView.js"></script>
+<script src="js/controllers/sidebarController.js"></script>
+<script src="js/view/allDishesView.js"></script>
+<script src="js/view/oneDishView.js"></script>
+<script src="js/view/menuView.js"></script>
+<script src="js/view/searchView.js"></script>
+<script src="js/view/mainView.js"></script>
+</body>
 </html>
