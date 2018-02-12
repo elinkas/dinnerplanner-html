@@ -22,4 +22,6 @@ var MainView = function (container, model) {
 		var a = document.getElementById("main");
 		a.style.display = "block";	
 	}
+
+
 }

@@ -9,17 +9,22 @@ $(function() {
 	var sidebarView = new SidebarView($("#sideBar"), model);;
 	var sidebarController = new SidebarController(sidebarView, model);
 	
-	var searchView = new SearchView($("#searchView"), model);
+	var searchView = new SearchView($("#selectDish"), model);
+	var searchViewController = new SearchViewController(searchView,model);
+
 	var mainView = new MainView($("#main"), model);
+	var mainViewController = new MainViewController(mainView,model);
+
+	var chosenView = new ChosenView($("#chosen"), model);
+	var chosenViewController = new ChosenViewController(chosenView,model);
+
 
 	// Global function, hiding all the views when starting the application
 	showWelcomeScreen = function(){
 		sidebarView.hide();
-		// allDishesView.hide();
-		//oneDishView.hide();
-		//menuView.hide();
 		mainView.hide();
 		searchView.hide();
+		chosenView.hide();
 	}
 	
 	showWelcomeScreen();
@@ -30,6 +35,16 @@ $(function() {
 		sidebarView.show();
 		searchView.show();
 		mainView.show();
+		chosenView.hide();
+	}
+
+
+	showChosenDishes = function(){
+		chosenView.show();
+		startView.hide();
+		sidebarView.show();
+		searchView.show();
+		mainView.hide();
 	}
 });
 

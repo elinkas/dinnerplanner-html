@@ -13,15 +13,14 @@ var DinnerModel = function() {
  	
  	//Set number of guests.
 	this.setNumberOfGuests = function(num) {
-		console.log(num);
+		console.log("number of guests: " + num);
 		numGuests = num;
 		return numGuests;
 	}
 	
 	//Return of guests.
 	this.getNumberOfGuests = function() {
-		console.log("hej2");
-		return ;
+		return numGuests;
 	}
 
 	//return this.getNumberOfGuests();
@@ -135,7 +134,7 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
-		console.log("hej1");
+		//console.log("hej1");
 	  	return dish.type == type && found;
 	  });	
 	}
@@ -401,7 +400,7 @@ var DinnerModel = function() {
 		}
 	];
 
-	this.setNumberOfGuests(1);
+	this.setNumberOfGuests(3);
 	//this.getNumberOfGuests();
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();

@@ -17,6 +17,8 @@ var SearchView = function (container, model) {
 		console.log(type);
 	}
 
+	this.searchButton = container.find("#searchButton");
+
    /** 
 	*
 	* Hide and show functions
