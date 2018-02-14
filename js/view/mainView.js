@@ -8,41 +8,27 @@
  */
 var MainView = function (container, model) {
 
-	//var wrapper= container.find("main"); //byt till container
-
 	var starters = [];
 	var mains = [];
 	var desserts = [];
-	//dishes += model.getAllDishes('starter','');
-
+	var chosenDishes = [];
 
 	this.update = function(){
-		// we want to get type and filter here
- 		//dishes = model.getAllDishes('main dish','');
- 		starters = model.getAllDishes('starter','');
- 		mains = model.getAllDishes('main dish','');
- 		desserts = model.getAllDishes('dessert','');
+		searchResultsDiv = container.find("#searchResults")
+		searchResultsDiv.html("");
 
-		container.html("");
-
- 		for(dish in starters){
-	 		container.append('<div class="dishButton" id="img' + starters[dish].id + '"><div class="col-md-2"><img src="./images/' + starters[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + starters[dish].name +  ' </figcaption></div></div>');
-	 		//wrapper.innerHTML += '<div id="img' + i + '"><div class="col-md-2"><img src="./images/' + dishes[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + dishes[dish].name +  ' </figcaption></div></div>';
-
-	 	}
-	 	 for(dish in mains){
-	 		container.append('<div class="dishButton" id="img' + mains[dish].id + '"><div class="col-md-2"><img src="./images/' + mains[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + mains[dish].name +  ' </figcaption></div></div>');
-	 		//wrapper.innerHTML += '<div id="img' + i + '"><div class="col-md-2"><img src="./images/' + dishes[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + dishes[dish].name +  ' </figcaption></div></div>';
-	 	}
-	 	 for(dish in desserts){
-	 		container.append('<div class="dishButton" id="img' + desserts[dish].id + '"><div class="col-md-2"><img src="./images/' + desserts[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + desserts[dish].name +  ' </figcaption></div></div>');
-	 		//wrapper.innerHTML += '<div id="img' + i + '"><div class="col-md-2"><img src="./images/' + dishes[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + dishes[dish].name +  ' </figcaption></div></div>';
-
-	 	}
+		dishes = model.getAllDishes(model.getType(), model.getFilter());
+		//for every dish that matches the type & filter, print out the image & caption.
+		for(dish in dishes){
+			searchResultsDiv.append('<div class="dishButton" id="img' + dishes[dish].id + '"><div class="col-md-2"><img src="./images/' + dishes[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + dishes[dish].name +  ' </figcaption></div></div>');
+		}
+		this.dishButton = container.find(".dishButton");
 	}
 
+	this.searchButton = container.find("#searchButton");
 	this.update();
-	this.dishButton = container.find(".dishButton");
+	model.addObserver(this);
+	this.update();
 
    /** 
 	*
@@ -50,12 +36,12 @@ var MainView = function (container, model) {
 	*
 	*/
 	this.hide = function() {
-		var a = document.getElementById("main");
+		var a = document.getElementById("mainWindow");
 		a.style.display = "none";
 	}
 
 	this.show = function(){
-		var a = document.getElementById("main");
+		var a = document.getElementById("mainWindow");
 		a.style.display = "block";	
 	}
 

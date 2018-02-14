@@ -12,28 +12,25 @@ var confDinner = function(){
 var DinnerModel = function() {
 	var observers = [];
 	var filter = "";
-	var type = 'starter';
+	var type = '';
 
 
-	this.setFilter = function(filter){
-		filter = filter;
+	this.setFilter = function(f){
+		filter = f;
 		notifyObservers();
 		return filter;
 	}
 
 	this.getFilter = function(){
-		//notifyObservers();
 		return filter;
 	}
-	this.setType = function(type){
-		//notifyObservers();
-		type = type;
+	this.setType = function(t){
+		type = t;
 		notifyObservers();
 		return type;
 	}
 
 	this.getType = function(){
-		//notifyObservers();
 		return type;
 	}
 
@@ -52,7 +49,6 @@ var DinnerModel = function() {
  	
  	//Set number of guests.
 	this.setNumberOfGuests = function(num) {
-		console.log("number of guests: " + num);
 		numGuests = num;
 		notifyObservers();
 		return numGuests;
@@ -61,11 +57,8 @@ var DinnerModel = function() {
 	
 	//Return of guests.
 	this.getNumberOfGuests = function() {
-		notifyObservers();
 		return numGuests;
 	}
-
-	//return this.getNumberOfGuests();
 
 	//Return the dish that is on the menu for selected type.
 	this.getSelectedDish = function(type) {
@@ -147,6 +140,7 @@ var DinnerModel = function() {
 		  	menu.push(id);
 		  }
 		});
+		notifyObservers();
 	}
 
 	//Remove dish from menu.
@@ -156,6 +150,7 @@ var DinnerModel = function() {
 				menu.splice(i,1);
 			}
 		}
+		notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -442,7 +437,7 @@ var DinnerModel = function() {
 		}
 	];
 
-	this.setNumberOfGuests(3);
+	this.setNumberOfGuests(4);
 	//this.getNumberOfGuests();
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();

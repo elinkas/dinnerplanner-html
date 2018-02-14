@@ -1,6 +1,11 @@
 var OneDishViewController = function(view, model ) {
 
-	//när man klickar på en bild av en maträtt
-	//var dish = model.getDish('2');
-	//console.log(dish);
+	view.addButton.on("click", function(){
+		//TODO: add to menu
+	});
+	view.backButton.on("click", function(){
+		showAllDishes();
+	});
+
 }
+

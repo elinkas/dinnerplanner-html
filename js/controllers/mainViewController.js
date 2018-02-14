@@ -1,13 +1,24 @@
 
 var MainViewController = function(view, model ) {
- 	var dishes = [];
 
- 	// we want to get type and filter here
- 	//dishes = model.getAllDishes('main dish',);
- 	//console.log();
- 	view.dishButton.on("click", function(){
- 		showOneDish(id);
- 	})
+	view.searchButton.on("click", function(){
+		//get the selected type & filter from user input
+		var filter = document.getElementById("textField").value;
+		var e = document.getElementById("dropdown");
+		var type = e.options[e.selectedIndex].text;
+
+		model.setFilter(filter);
+		model.setType(type);
+		view.update();
+
+		view.dishButton.each(function(i, el){
+			el.addEventListener("click", function(){
+				//send the id-nr of selected dish to ShowOneDish
+	 			showOneDish(el.id);
+	 		})
+		});
+
+	});
 
 
  }
