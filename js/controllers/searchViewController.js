@@ -1,19 +1,22 @@
 
 
-var SearchViewController = function(view, model ) {
+var SearchViewController = function(view, model, chosenView) {
 	var dishes = [];
-	view.searchButton.click(function(){
-	 	// ta fram värdet från textfältet
-	 	var filter = document.getElementById("textField").value;
+		view.searchButton.click(function(){
+			var filter = document.getElementById("textField").value;
 
-	 	// ta fram värdet från drop-down listan
-	 	var e = document.getElementById("dropdown");
-		var type = e.options[e.selectedIndex].text;
+		 	// ta fram värdet från drop-down listan
+		 	var e = document.getElementById("dropdown");
+			var type = e.options[e.selectedIndex].text;
 
-		dishes = model.getAllDishes(type, filter);
-		console.log(dishes);
+			model.setFilter(filter);
+			model.setType(type);
 
-		showChosenDishes();
-	 });
+			//hämtar alla rätter som har rätt filter & type
+			dishes = model.getAllDishes(type, filter);
+			showChosenDishes();
+			chosenView.update(dishes);
+
+		});
 
 }

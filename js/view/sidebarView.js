@@ -34,6 +34,14 @@ var SidebarView = function (container, model) {
 	 */
 	var numberOfGuests = container.find("#numberOfGuests");
 	
+
+	this.update = function(){
+		numberOfGuests.html(numGuests); 
+	}
+
+	this.update();
+	model.addObserver(this);
+
 	/**
 	 * When we want references to some view elements to be available from outside of view, we 
 	 * define them as this.someName. We don't need this in Lab 1 yet, but in Lab 2 it 
@@ -47,10 +55,8 @@ var SidebarView = function (container, model) {
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 
-
 	numGuests = model.getNumberOfGuests();
-	numberOfGuests.html(numGuests); 
-
+	//numberOfGuests.html(numGuests); 
 
    /** 
 	*

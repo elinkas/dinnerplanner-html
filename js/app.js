@@ -10,13 +10,16 @@ $(function() {
 	var sidebarController = new SidebarController(sidebarView, model);
 	
 	var searchView = new SearchView($("#selectDish"), model);
-	var searchViewController = new SearchViewController(searchView,model);
+	var searchViewController = new SearchViewController(searchView,model, chosenView);
 
 	var mainView = new MainView($("#main"), model);
 	var mainViewController = new MainViewController(mainView,model);
 
 	var chosenView = new ChosenView($("#chosen"), model);
 	var chosenViewController = new ChosenViewController(chosenView,model);
+
+	var oneDishView = new OneDishView($("#oneDish"), model);
+	var oneDishViewController = new OneDishViewController(oneDishView,model);
 
 
 	// Global function, hiding all the views when starting the application
@@ -45,6 +48,15 @@ $(function() {
 		sidebarView.show();
 		searchView.show();
 		mainView.hide();
+	}
+
+	showOneDish = function(id){
+		chosenView.hide();
+		startView.hide();
+		sidebarView.show();
+		searchView.hide();
+		mainView.hide();
+		oneDishView.show(id);
 	}
 });
 

@@ -11,6 +11,15 @@
  * @param {Object} model - the reference to the Dinner Model
  */ 
 var SearchView = function (container, model) {
+
+	this.update = function(filter){
+		model.getAllDishes(model.getType(),model.getFilter());
+		console.log(model.getAllDishes(model.getType(),model.getFilter()));
+		//console.log(model.getType() + model.getFilter());
+	}
+
+	this.update();
+	model.addObserver(this);
 	
 	var searchKeyWord = function (input){
 		var type = document.getElementById("selectDish").submit();

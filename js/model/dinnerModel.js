@@ -10,16 +10,58 @@ var confDinner = function(){
 }
 
 var DinnerModel = function() {
+	var observers = [];
+	var filter = "";
+	var type = 'starter';
+
+
+	this.setFilter = function(filter){
+		filter = filter;
+		notifyObservers();
+		return filter;
+	}
+
+	this.getFilter = function(){
+		//notifyObservers();
+		return filter;
+	}
+	this.setType = function(type){
+		//notifyObservers();
+		type = type;
+		notifyObservers();
+		return type;
+	}
+
+	this.getType = function(){
+		//notifyObservers();
+		return type;
+	}
+
+	this.addObserver = function(observer) { 
+		observers.push(observer);
+	}
+	var notifyObservers = function(obj) { 
+		for(var i = 0; i<observers.length; i++){
+			observers[i].update(obj);
+		}
+	}
+
+	this.removeObserver = function(observer){
+
+	}
  	
  	//Set number of guests.
 	this.setNumberOfGuests = function(num) {
 		console.log("number of guests: " + num);
 		numGuests = num;
+		notifyObservers();
 		return numGuests;
+
 	}
 	
 	//Return of guests.
 	this.getNumberOfGuests = function() {
+		notifyObservers();
 		return numGuests;
 	}
 
