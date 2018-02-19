@@ -6,6 +6,9 @@ var OneDishView = function (container, model) {
 	*
 	*/
 
+
+	//input type number!!
+
 	this.show = function(id){
 		console.log("this is id " + id);
 		this.update(id);

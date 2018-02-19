@@ -25,6 +25,10 @@ var MainView = function (container, model) {
 		this.dishButton = container.find(".dishButton");
 	}
 
+	// FEEDBACK LAB 2, CANNOT USE GETELEMENTBYID
+	this.filter = container.find("");
+	this.e = container.find("");
+
 	this.searchButton = container.find("#searchButton");
 	this.update();
 	model.addObserver(this);

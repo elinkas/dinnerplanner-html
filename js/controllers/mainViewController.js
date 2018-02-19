@@ -7,6 +7,8 @@ var MainViewController = function(view, model ) {
 		var e = document.getElementById("dropdown");
 		var type = e.options[e.selectedIndex].text;
 
+		
+
 		model.setFilter(filter);
 		model.setType(type);
 		view.update();
@@ -17,7 +19,6 @@ var MainViewController = function(view, model ) {
 	 			showOneDish(el.id);
 	 		})
 		});
-
 	});
 
 

@@ -25,7 +25,7 @@ $(function() {
 	
 	showWelcomeScreen();
 	
-	// Create new dinner
+	// Create new dinner 
 	showAllDishes = function(){
 		startView.hide();
 		sidebarView.show();
