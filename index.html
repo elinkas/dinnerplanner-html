@@ -32,71 +32,73 @@
 			<!-- Side Bar -->
 			<div class="col-md-2">
 				<div id="sideBar">
-					<div>
-						Number of guests: <span id="numberOfGuests"></span>
-					</div>
-					<div>
-						<button id="minusGuest" class="btn" style="background-color:orange"><span class="glyphicon glyphicon-minus"></span></button>
-						<button id="plusGuest" class="btn" style="background-color:orange"><span class="glyphicon glyphicon-plus"></span></button>
-						<!-- <input class="quantity" class="btn" id="guest" min="0" name="form-0-quantity" value="1" type="number"> -->
-					</div><br>
-					<div id ="nameandcost">
-						Dish name &emsp;&emsp;&emsp; Cost <br>
-					</div>
+					<div id="sideBar2">
+						<div>
+							Number of guests: <span id="numberOfGuests"></span>
+						</div>
+						<div>
+							<button id="minusGuest" class="btn" style="background-color:orange"><span class="glyphicon glyphicon-minus"></span></button>
+							<button id="plusGuest" class="btn" style="background-color:orange"><span class="glyphicon glyphicon-plus"></span></button>
+							<!-- <input class="quantity" class="btn" id="guest" min="0" name="form-0-quantity" value="1" type="number"> -->
+						</div><br>
+						<div id ="nameandcost">
+							Dish name &emsp;&emsp;&emsp; Cost <br>
+						</div>
 
-					<!-- här borde vi matcha till att visa de rätter som lagts till i menyn. -->
-					<div id="menuDetails"> 
-						lasagne 70 kr osv osv
+						<!-- här borde vi matcha till att visa de rätter som lagts till i menyn. -->
+						<div id="menuDetails"> 
+							
+						</div>
+						<div><button id="ConfirmDinner" class="btn" style="background-color:orange">Confirm Dinner</button></div>
 					</div>
-					<div><button id="ConfirmDinner" class="btn" style="background-color:orange">Confirm Dinner</button></div>
-
-
 				</div>
 			</div>
 
 
 			<!-- Search Bar -->
 			<div id="mainWindow">
-				<div class ="col-md-10">
-					<div id="selectDish">
-						<div class="row">
-							<b>Find a Dish </b><br>
-							<div class="search">
-		
-								<input name="textField" id="textField" type="text" class="searchTerm" placeholder="Enter key words">
-								<div class="oneline"><select name="All" id="dropdown" class="form-control" style="width:200px">
-									<option value="main dish">starter</option>
-									<option value="starter">main dish</option>
-									<option value="dessert">dessert</option>
-								</select></div>
-								
-								<div class="oneline"><button id="searchButton" class="btn" style="background-color:orange">Search</button></div>
-							</div>
-						</div><br>
+				<div id="mainWindow2">
+					<div class ="col-md-10">
+						<div id="selectDish">
+							<div class="row">
+								<b>Find a Dish </b><br>
+								<div class="search">
+			
+									<input name="textField" id="textField" type="text" class="searchTerm" placeholder="Enter key words">
+									<div class="oneline"><select name="All" id="dropdown" class="form-control" style="width:200px">
+										<option value="main dish">starter</option>
+										<option value="starter">main dish</option>
+										<option value="dessert">dessert</option>
+									</select></div>
+									
+									<div class="oneline"><button id="searchButton" class="btn" style="background-color:orange">Search</button></div>
+								</div>
+							</div><br>
+						</div>
+					<div class="row" id="searchResults"><br>
+						
 					</div>
-				<div class="row" id="searchResults"><br>
-					
 				</div>
 			</div>
 		</div><br><br>
 			<div id="oneDish">
-				<div class = "col-md-5">
-					<div class = "row">
-						<div id="imglist">
-						
-						</div>
-					</div>
-					<div class = "row">
-						<div id = "description">
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-						</div><br>
-						<button id="backButton" class="btn" style="background-color:orange">Back To Search</button> 
-						<div id = "preparation">
+				<div id = "oneDish2">
+					<div class = "col-md-5">
+						<div class = "row">
+							<div id="imglist">
 							
+							</div>
+						</div>
+						<div class = "row">
+							<div id = "description">
+								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+							</div><br>
+							<button id="backButton" class="btn" style="background-color:orange">Back To Search</button> 
+							<div id = "preparation">
+								
+							</div>
 						</div>
 					</div>
-				</div>
-
 					<div class = "col-md-1">
 						<div id="quantity">
 						</div><br>
@@ -111,10 +113,7 @@
 						</div><br>
 						<div id="total"></div>
 					</div>
-					
 				</div>
-
-
 			</div>
 		</div>
 

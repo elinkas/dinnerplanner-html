@@ -3,7 +3,9 @@ var menu = [];
 var ingred = [];
 var menuNames = [];
 var priceList = [];
-
+var currentDish;
+var totPrice;
+var name = "test";
 
 var confDinner = function(){
 	console.log("dinner is confirmed");
@@ -14,6 +16,25 @@ var DinnerModel = function() {
 	var filter = "";
 	var type = '';
 
+	this.getName = function(){
+		return name;
+	}
+
+	this.setName = function(n){
+		name = n;
+		notifyObservers();
+		return name;
+	}
+
+	this.setPrice = function(p){
+		totPrice = p;
+		notifyObservers();
+		return totPrice;
+	}
+
+	this.getPrice = function(){
+		return totPrice;
+	}
 
 	this.setFilter = function(f){
 		filter = f;
@@ -32,6 +53,16 @@ var DinnerModel = function() {
 
 	this.getType = function(){
 		return type;
+	}
+
+	this.getCurrentDish = function(){
+		return currentDish;
+	}
+
+	this.setCurrentDish = function(id){
+		currentDish = id;
+		notifyObservers();
+		return currentDish;
 	}
 
 	this.addObserver = function(observer) { 

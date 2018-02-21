@@ -10,14 +10,14 @@ var OneDishView = function (container, model) {
 	//input type number!!
 
 	this.show = function(id){
-		console.log("this is id " + id);
+		//console.log("this is id " + id);
 		this.update(id);
-		var a = document.getElementById("oneDish");
-		a.style.display = "block";		
+		var a = container.find("#oneDish2");
+		a.show();
 	}
-		this.hide = function() {
-		var a = document.getElementById("oneDish");
-		a.style.display = "none";
+	this.hide = function() {
+		var a = container.find("#oneDish2");
+		a.hide();
 	}
 
 
@@ -38,7 +38,9 @@ var OneDishView = function (container, model) {
 			var quantitylist = [];
 			for(var i=0; i< dish.ingredients.length; i++){
 				quantitylist = dish.ingredients[i]
-				quantityDiv.append('' + quantitylist.quantity + ' ' + quantitylist.unit + '<br>');
+				var num = model.getNumberOfGuests();
+				var quant = quantitylist.quantity * num;
+				quantityDiv.append('' + quant.toFixed(2) + ' ' + quantitylist.unit + '<br>');
 			}	
 
 			// prints name of ingredients
@@ -57,6 +59,7 @@ var OneDishView = function (container, model) {
 			for(var i=0; i< dish.ingredients.length; i++){
 				pricelist = dish.ingredients[i]
 				var num = model.getNumberOfGuests();
+				//console.log(num);
 				priceDiv.append('SEK ' + pricelist.price * num + '<br>');
 			}		
 
@@ -68,10 +71,8 @@ var OneDishView = function (container, model) {
 			for(var i=0; i< dish.ingredients.length; i++){
 				totallist = dish.ingredients[i];
 				totalamount += totallist.price * model.getNumberOfGuests();
-				
 			}
 			totalDiv.append("SEK " + totalamount)
-			console.log(totalamount)
 
 			// prints the preparation text
 			prepDiv = container.find("#preparation")
@@ -79,6 +80,7 @@ var OneDishView = function (container, model) {
 			prepDiv.append('<h1>Preparation</h1><br>' + dish.description)
 		}
 	}
+
 
 	this.addButton = container.find("#addButton");
 	this.backButton = container.find("#backButton");

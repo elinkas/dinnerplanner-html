@@ -40,13 +40,13 @@ var MainView = function (container, model) {
 	*
 	*/
 	this.hide = function() {
-		var a = document.getElementById("mainWindow");
-		a.style.display = "none";
+		var a = container.find("#mainWindow2");
+		a.hide();
 	}
 
 	this.show = function(){
-		var a = document.getElementById("mainWindow");
-		a.style.display = "block";	
+		var a = container.find("#mainWindow2");
+		a.show()	
 	}
 
 

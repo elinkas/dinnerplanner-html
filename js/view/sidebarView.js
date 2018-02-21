@@ -36,7 +36,7 @@ var SidebarView = function (container, model) {
 	
 
 	this.update = function(){
-		numberOfGuests.html(numGuests); 
+		numberOfGuests.html(model.getNumberOfGuests()); 
 	}
 
 	this.update();
@@ -45,7 +45,12 @@ var SidebarView = function (container, model) {
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 
-	numGuests = model.getNumberOfGuests();
+	this.append1 = function(){
+		var dishListDiv = container.find("#menuDetails");
+		dishListDiv.html("");
+		dishListDiv.append(model.getName() + ' ' + model.getPrice());
+		//console.log(model.getName());
+	}
 
    /** 
 	*
@@ -53,12 +58,12 @@ var SidebarView = function (container, model) {
 	*
 	*/
 	this.hide = function() {
-		var a = document.getElementById("sideBar");
-		a.style.display = "none";
+		var a = container.find("#sideBar2");
+		a.hide();
 	}
 
-	this.show = function(){
-		var a = document.getElementById("sideBar");
-		a.style.display = "block";	
+	this.show = function(id){
+		var a = container.find("#sideBar2");
+		a.show();	
 	}
 }

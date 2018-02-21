@@ -16,7 +16,10 @@ var MainViewController = function(view, model ) {
 		view.dishButton.each(function(i, el){
 			el.addEventListener("click", function(){
 				//send the id-nr of selected dish to ShowOneDish
+				model.setCurrentDish(el.id);
 	 			showOneDish(el.id);
+
+
 	 		})
 		});
 	});

@@ -10,10 +10,10 @@ $(function() {
 	var sidebarController = new SidebarController(sidebarView, model);
 	
 	var mainView = new MainView($("#mainWindow"), model);
-	var mainViewController = new MainViewController(mainView,model,);
+	var mainViewController = new MainViewController(mainView,model);
 
 	var oneDishView = new OneDishView($("#oneDish"), model);
-	var oneDishViewController = new OneDishViewController(oneDishView,model);
+	var oneDishViewController = new OneDishViewController(sidebarView, oneDishView,model);
 
 
 	// Global function, hiding all the views when starting the application
@@ -43,7 +43,7 @@ $(function() {
 
 	showOneDish = function(id){
 		startView.hide();
-		sidebarView.show();
+		sidebarView.show(id);
 		mainView.hide();
 		oneDishView.show(id);
 	}
