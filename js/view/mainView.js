@@ -5,7 +5,7 @@
  * - Search result
  * - Chosen menu
  *
- */
+ */ 
 var MainView = function (container, model) {
 
 	var starters = [];

@@ -1,12 +1,12 @@
 //DinnerModel Object constructor
 var menu = [];
 var ingred = [];
-var menuNames = [];
+var menuID = [];
 var priceList = [];
 var currentDish;
 var totPrice;
-var name = "test";
-
+var name = "test"; 
+ 
 var confDinner = function(){
 	console.log("dinner is confirmed");
 }
@@ -35,7 +35,7 @@ var DinnerModel = function() {
 	this.getPrice = function(){
 		return totPrice;
 	}
-
+ 
 	this.setFilter = function(f){
 		filter = f;
 		notifyObservers();
@@ -68,6 +68,7 @@ var DinnerModel = function() {
 	this.addObserver = function(observer) { 
 		observers.push(observer);
 	}
+
 	var notifyObservers = function(obj) { 
 		for(var i = 0; i<observers.length; i++){
 			observers[i].update(obj);
@@ -112,7 +113,7 @@ var DinnerModel = function() {
 
 		for(key in dishes){
 			if(dishes[key].id == selected) {
-				console.log(dishes[key]);
+				//console.log(dishes[key]);
 				return dishes[key];
 			}
 		}
@@ -124,12 +125,12 @@ var DinnerModel = function() {
 			var id2 = menu[i];
 			for(key in dishes){
 				if(dishes[key].id == id2) {
-					menuNames.push(dishes[key].name);
-					console.log(menuNames);
+					menuID.push(dishes[key].id);
+					//console.log(menuNames);
 				}
 			}
 		}
-		return menuNames;
+		return menuID;
 	}
 
 	//Return all ingredients for all the dishes on the menu.
@@ -149,13 +150,16 @@ var DinnerModel = function() {
 	//Return the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var price = 0;
-		for(i=0; i<menu.length;i++){
-			var selected = menu[i];
+		//console.log(menu.length);
+		for(item in menu){
+			var selected = menu[item];
+			//console.log('sel ' + selected);
 			for(key in dishes){
-				if(dishes[key].id == selected) {
+				if(dishes[key].id === selected) {
 					ingredList=dishes[key].ingredients;
 					for(i=0; i<ingredList.length;i++){
 						price += ingredList[i].price;
+						//console.log(price);
 					}
 				}
 			}
@@ -473,8 +477,10 @@ var DinnerModel = function() {
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();
 	//this.getAllIngredients();
-	//this.getTotalMenuPrice();
-	//this.addDishToMenu(3);
+	this.addDishToMenu(3);
+	this.addDishToMenu(100);
+	this.addDishToMenu(202);
+	this.getTotalMenuPrice();
 	//this.removeDishFromMenu(3);
 
 }

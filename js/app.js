@@ -15,12 +15,20 @@ $(function() {
 	var oneDishView = new OneDishView($("#oneDish"), model);
 	var oneDishViewController = new OneDishViewController(sidebarView, oneDishView,model);
 
+	var confirmDinnerView = new ConfirmDinnerView($("#confirmDinner"), model);
+	var confirmDinnerViewController = new ConfirmDinnerViewController(confirmDinnerView,model);
+
+	var printRecipeView = new PrintRecipeView($("#printRecipe"), model);
+	var printRecipeViewController = new PrintRecipeViewController(printRecipeView,model);
+ 
 
 	// Global function, hiding all the views when starting the application
 	showWelcomeScreen = function(){
 		sidebarView.hide();
 		mainView.hide();
-		oneDishView.hide()
+		oneDishView.hide();
+		confirmDinnerView.hide();
+		printRecipeView.hide();
 	}
 	
 	showWelcomeScreen();
@@ -30,7 +38,9 @@ $(function() {
 		startView.hide();
 		sidebarView.show();
 		mainView.show();
-		oneDishView.hide()
+		oneDishView.hide();
+		confirmDinnerView.hide();
+		printRecipeView.hide();
 	}
 
 
@@ -38,14 +48,36 @@ $(function() {
 		startView.hide();
 		sidebarView.show();
 		mainView.show();
-		oneDishView.hide()
+		oneDishView.hide();
+		confirmDinnerView.hide();
+		printRecipeView.hide();
 	}
 
 	showOneDish = function(id){
 		startView.hide();
-		sidebarView.show(id);
+		sidebarView.show();
 		mainView.hide();
 		oneDishView.show(id);
+		confirmDinnerView.hide();
+		printRecipeView.hide();
+	}
+
+	showConfirmedDinner = function(){
+		startView.hide();
+		sidebarView.hide();
+		mainView.hide();
+		oneDishView.hide();
+		confirmDinnerView.show();
+		printRecipeView.hide();
+	}
+
+	showPrintedRecipe = function(){
+		startView.hide();
+		sidebarView.hide();
+		mainView.hide();
+		oneDishView.hide();
+		confirmDinnerView.hide();
+		printRecipeView.show();
 	}
 });
 

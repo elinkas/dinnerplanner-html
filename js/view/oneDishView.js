@@ -1,16 +1,6 @@
 var OneDishView = function (container, model) {
 
-   /** 
-	*
-	* show&hide-functions
-	*
-	*/
-
-
-	//input type number!!
-
 	this.show = function(id){
-		//console.log("this is id " + id);
 		this.update(id);
 		var a = container.find("#oneDish2");
 		a.show();
@@ -20,11 +10,10 @@ var OneDishView = function (container, model) {
 		a.hide();
 	}
 
-
 	this.update = function(id){
 		if(id == null){
 			id = 0;
-		}else{
+		}else{ 
 			//appends the image of the chosen dish to html-div "imglist"
 			dish = model.getDish(id.substring(3));
 			oneDishDiv = container.find("#imglist")
@@ -59,7 +48,6 @@ var OneDishView = function (container, model) {
 			for(var i=0; i< dish.ingredients.length; i++){
 				pricelist = dish.ingredients[i]
 				var num = model.getNumberOfGuests();
-				//console.log(num);
 				priceDiv.append('SEK ' + pricelist.price * num + '<br>');
 			}		
 
@@ -73,6 +61,7 @@ var OneDishView = function (container, model) {
 				totalamount += totallist.price * model.getNumberOfGuests();
 			}
 			totalDiv.append("SEK " + totalamount)
+			//model.setPrice(totalamount);
 
 			// prints the preparation text
 			prepDiv = container.find("#preparation")
@@ -81,6 +70,7 @@ var OneDishView = function (container, model) {
 		}
 	}
 
+	model.addObserver(this);
 
 	this.addButton = container.find("#addButton");
 	this.backButton = container.find("#backButton");

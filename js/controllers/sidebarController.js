@@ -7,6 +7,10 @@ var SidebarController = function(view, model ) {
  	model.setNumberOfGuests(model.getNumberOfGuests() - 1);
  });
 
+ view.confirmDinnerButton.click(function(){
+ 	showConfirmedDinner(); 
+ });
+
 
 }
 

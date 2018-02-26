@@ -9,7 +9,7 @@
  * - Confirming dinner
  * 
  * @param {jQuery object} container - references the HTML parent element that contains the view.
- * @param {Object} model - the reference to the Dinner Model
+ * @param {Object} model - the reference to the Dinner Model 
  */ 
 var SidebarView = function (container, model) {
 	
@@ -37,20 +37,26 @@ var SidebarView = function (container, model) {
 
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
+		//this.append1(id);
 	}
 
-	this.update();
+	//this.update();
 	model.addObserver(this);
 
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 
-	this.append1 = function(){
-		var dishListDiv = container.find("#menuDetails");
-		dishListDiv.html("");
-		dishListDiv.append(model.getName() + ' ' + model.getPrice());
+	this.confirmDinnerButton = container.find("#confirmDinnerButton");
+
+	//this.append1 = function(id){
+	//	var dishListDiv = container.find("#menuDetails");
+	//	var newID = id.substring(3);
+	//	console.log(newID);
+	//	dishListDiv.html("");
+	//	dish=model.getDish(newID);
+	//	dishListDiv.append(dish.name + ' ' + model.getPrice());
 		//console.log(model.getName());
-	}
+	//}
 
    /** 
 	*
@@ -62,8 +68,9 @@ var SidebarView = function (container, model) {
 		a.hide();
 	}
 
-	this.show = function(id){
+	this.show = function(){
 		var a = container.find("#sideBar2");
+		this.update();
 		a.show();	
 	}
 }
