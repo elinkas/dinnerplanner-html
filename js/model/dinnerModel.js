@@ -150,21 +150,18 @@ var DinnerModel = function() {
 	//Return the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var price = 0;
-		//console.log(menu.length);
 		for(item in menu){
 			var selected = menu[item];
-			//console.log('sel ' + selected);
 			for(key in dishes){
-				if(dishes[key].id === selected) {
+				if(dishes[key].id === selected.id) {
 					ingredList=dishes[key].ingredients;
-					for(i=0; i<ingredList.length;i++){
-						price += ingredList[i].price;
-						//console.log(price);
+					for(elem in ingredList){
+						price += ingredList[elem].price;
+						console.log("price " + price);
 					}
 				}
 			}
 		}
-		console.log(price*numGuests);
 		return price*numGuests;
 	}
 
@@ -477,10 +474,10 @@ var DinnerModel = function() {
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();
 	//this.getAllIngredients();
-	this.addDishToMenu(3);
-	this.addDishToMenu(100);
-	this.addDishToMenu(202);
-	this.getTotalMenuPrice();
+	//this.addDishToMenu(3);
+	//this.addDishToMenu(100);
+	//this.addDishToMenu(202);
+	//this.getTotalMenuPrice();
 	//this.removeDishFromMenu(3);
 
 }

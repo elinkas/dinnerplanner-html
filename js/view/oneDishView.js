@@ -61,12 +61,13 @@ var OneDishView = function (container, model) {
 				totalamount += totallist.price * model.getNumberOfGuests();
 			}
 			totalDiv.append("SEK " + totalamount)
-			//model.setPrice(totalamount);
 
 			// prints the preparation text
 			prepDiv = container.find("#preparation")
 			prepDiv.html("")
 			prepDiv.append('<h1>Preparation</h1><br>' + dish.description)
+			
+			model.setPrice(totalamount);
 		}
 	}
 

@@ -35,9 +35,13 @@ var SidebarView = function (container, model) {
 	var numberOfGuests = container.find("#numberOfGuests");
 	
 
-	this.update = function(){
+	this.update = function(id){
 		numberOfGuests.html(model.getNumberOfGuests()); 
-		//this.append1(id);
+		if(!isNaN(id)){
+			var dishListDiv = container.find("#menuDetails");
+			dish=model.getDish(id);
+			dishListDiv.append(dish.name + '&emsp;' + model.getPrice() + '<br>');
+		}
 	}
 
 	//this.update();
@@ -48,15 +52,7 @@ var SidebarView = function (container, model) {
 
 	this.confirmDinnerButton = container.find("#confirmDinnerButton");
 
-	//this.append1 = function(id){
-	//	var dishListDiv = container.find("#menuDetails");
-	//	var newID = id.substring(3);
-	//	console.log(newID);
-	//	dishListDiv.html("");
-	//	dish=model.getDish(newID);
-	//	dishListDiv.append(dish.name + ' ' + model.getPrice());
-		//console.log(model.getName());
-	//}
+	
 
    /** 
 	*

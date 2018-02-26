@@ -18,7 +18,7 @@ var ConfirmDinnerView = function (container, model) {
 		for (dish in menu){
 			imageListDiv.append('<div id="img' + menu[dish].id + '"><div class="col-md-2"> <img src="./images/' + menu[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + menu[dish].name +  ' </figcaption></div></div>');
 		}
-		
+		 
 
 		totalMenuPrice.html(model.getTotalMenuPrice()); 
 	}

@@ -8,4 +8,4 @@ var ConfirmDinnerViewController = function(view, model) {
  	showPrintedRecipe();
  });
 
-}
+} 
