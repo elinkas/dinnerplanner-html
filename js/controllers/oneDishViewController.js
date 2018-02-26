@@ -1,6 +1,7 @@
 var OneDishViewController = function(sidebarView, view, model) {
 
 	view.addButton.on("click", function(){
+		// add chosen dish to menu
 		var id = model.getCurrentDish();
 		sidebarView.update(id.substring(3));
 		model.addDishToMenu(id.substring(3));
@@ -9,6 +10,4 @@ var OneDishViewController = function(sidebarView, view, model) {
 	view.backButton.on("click", function(){
 		showAllDishes();
 	});
- 
 }
-

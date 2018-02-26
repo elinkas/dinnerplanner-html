@@ -8,14 +8,8 @@ var StartView = function (container, model) {
 	
 	this.startButton = container.find("#startButton");
 
-   /** 
-	*
-	* Hide function
-	*
-	*/
-	 this.hide = function() {
+	this.hide = function() {
 		var a = document.getElementById("startPage");
 		a.style.display = "none";
 	}
 }
- 

@@ -1,15 +1,5 @@
 var OneDishView = function (container, model) {
 
-	this.show = function(id){
-		this.update(id);
-		var a = container.find("#oneDish2");
-		a.show();
-	}
-	this.hide = function() {
-		var a = container.find("#oneDish2");
-		a.hide();
-	}
-
 	this.update = function(id){
 		if(id == null){
 			id = 0;
@@ -78,4 +68,14 @@ var OneDishView = function (container, model) {
 
 	this.update();
 
+	this.show = function(id){
+		this.update(id);
+		var a = container.find("#oneDish2");
+		a.show();
+	}
+
+	this.hide = function() {
+		var a = container.find("#oneDish2");
+		a.hide();
+	}
 }

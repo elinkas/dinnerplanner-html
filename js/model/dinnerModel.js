@@ -5,7 +5,6 @@ var menuID = [];
 var priceList = [];
 var currentDish;
 var totPrice;
-var name = "test"; 
  
 var confDinner = function(){
 	console.log("dinner is confirmed");
@@ -469,7 +468,7 @@ var DinnerModel = function() {
 		}
 	];
 
-	this.setNumberOfGuests(4);
+	this.setNumberOfGuests(0);
 	//this.getNumberOfGuests();
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();

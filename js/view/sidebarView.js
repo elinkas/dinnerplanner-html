@@ -44,7 +44,6 @@ var SidebarView = function (container, model) {
 		}
 	}
 
-	//this.update();
 	model.addObserver(this);
 
 	this.plusButton = container.find("#plusGuest");
@@ -52,13 +51,6 @@ var SidebarView = function (container, model) {
 
 	this.confirmDinnerButton = container.find("#confirmDinnerButton");
 
-	
-
-   /** 
-	*
-	* Hide and show functions
-	*
-	*/
 	this.hide = function() {
 		var a = container.find("#sideBar2");
 		a.hide();

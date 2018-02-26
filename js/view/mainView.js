@@ -47,6 +47,4 @@ var MainView = function (container, model) {
 		var a = container.find("#mainWindow2");
 		a.show()	
 	}
-
-
 }

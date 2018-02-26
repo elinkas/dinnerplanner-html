@@ -7,5 +7,4 @@ var ConfirmDinnerViewController = function(view, model) {
  view.printButton.click(function(){
  	showPrintedRecipe();
  });
-
 } 

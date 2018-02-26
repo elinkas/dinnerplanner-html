@@ -16,11 +16,7 @@ var MainViewController = function(view, model ) {
 				//send the id-nr of selected dish to ShowOneDish
 				model.setCurrentDish(el.id);
 	 			showOneDish(el.id);
-
-
 	 		})
 		});
 	});
-
-
- }
+}

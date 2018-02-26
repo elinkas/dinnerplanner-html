@@ -8,7 +8,7 @@ var ConfirmDinnerView = function (container, model) {
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		IDmenu = model.getFullMenu();
-		menu=[]; 
+		menu=[];
 
 		imageListDiv = container.find("#imageList")
 		imageListDiv.html("");

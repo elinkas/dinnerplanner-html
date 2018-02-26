@@ -5,16 +5,14 @@ var PrintRecipeView = function (container, model) {
 
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
-		dishes = model.getFullMenu();
+		dishes = model.getFullMenu(); // collect all dishes from menu
 
 		divDiv = container.find("#recipeList");
 		divDiv.html("");
 
 
-		for(dish in dishes){
-			dishObject = model.getDish(dishes[dish]);
-
-
+		for(dish in dishes){ // for each dish in menu
+			dishObject = model.getDish(dishes[dish]); // collect details about this dish and append to html
 			divDiv.append('<div class="row">' + 
 						'<div class ="col-md-2">' +
 							'<div id="image">' +

@@ -43,7 +43,7 @@ $(function() {
 		printRecipeView.hide();
 	}
 
-
+	// Result from dish seatch
 	showChosenDishes = function(){
 		startView.hide();
 		sidebarView.show();
@@ -53,6 +53,7 @@ $(function() {
 		printRecipeView.hide();
 	}
 
+	// Detail view of dish
 	showOneDish = function(id){
 		startView.hide();
 		sidebarView.show();
@@ -62,6 +63,7 @@ $(function() {
 		printRecipeView.hide();
 	}
 
+	// Show chosen menu
 	showConfirmedDinner = function(){
 		startView.hide();
 		sidebarView.hide();
@@ -71,6 +73,7 @@ $(function() {
 		printRecipeView.hide();
 	}
 
+	// Print chosen menu
 	showPrintedRecipe = function(){
 		startView.hide();
 		sidebarView.hide();
