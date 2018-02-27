@@ -40,7 +40,9 @@ var SidebarView = function (container, model) {
 		if(!isNaN(id)){
 			var dishListDiv = container.find("#menuDetails");
 			dish=model.getDish(id);
-			dishListDiv.append(dish.name + '&emsp;' + model.getPrice() + '<br>');
+			console.log("price2 " + model.getPrice());
+			console.log("guests " + model.getNumberOfGuests());
+			dishListDiv.append(dish.name + '&emsp;' + model.getPrice() * model.getNumberOfGuests() + '<br>');
 		}
 	}
 

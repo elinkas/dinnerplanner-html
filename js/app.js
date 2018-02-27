@@ -6,17 +6,17 @@ $(function() {
 	var startView = new StartView($("#startPage"), model);
 	var startViewController = new StartViewController(startView, model);
 
-	var sidebarView = new SidebarView($("#sideBar"), model);;
-	var sidebarController = new SidebarController(sidebarView, model);
-	
 	var mainView = new MainView($("#mainWindow"), model);
 	var mainViewController = new MainViewController(mainView,model);
 
+	var sidebarView = new SidebarView($("#sideBar"), model);;
+	var sidebarController = new SidebarController(mainView, sidebarView, model);
+
 	var oneDishView = new OneDishView($("#oneDish"), model);
-	var oneDishViewController = new OneDishViewController(sidebarView, oneDishView,model);
+	var oneDishViewController = new OneDishViewController(mainView, sidebarView, oneDishView,model);
 
 	var confirmDinnerView = new ConfirmDinnerView($("#confirmDinner"), model);
-	var confirmDinnerViewController = new ConfirmDinnerViewController(confirmDinnerView,model);
+	var confirmDinnerViewController = new ConfirmDinnerViewController(mainView, confirmDinnerView,model);
 
 	var printRecipeView = new PrintRecipeView($("#printRecipe"), model);
 	var printRecipeViewController = new PrintRecipeViewController(printRecipeView,model);

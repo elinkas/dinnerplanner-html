@@ -2,6 +2,7 @@
 var MainViewController = function(view, model ) {
 
 	view.searchButton.on("click", function(){
+		//view.redo();
 		//get the selected type & filter from user input
 		var filter = document.getElementById("textField").value;
 		var e = document.getElementById("dropdown");
@@ -15,7 +16,7 @@ var MainViewController = function(view, model ) {
 			el.addEventListener("click", function(){
 				//send the id-nr of selected dish to ShowOneDish
 				model.setCurrentDish(el.id);
-	 			showOneDish(el.id);
+	 			showOneDish(el.id); 
 	 		})
 		});
 	});

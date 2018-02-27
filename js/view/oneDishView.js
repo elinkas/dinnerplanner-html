@@ -48,9 +48,9 @@ var OneDishView = function (container, model) {
 			var totallist = [];
 			for(var i=0; i< dish.ingredients.length; i++){
 				totallist = dish.ingredients[i];
-				totalamount += totallist.price * model.getNumberOfGuests();
+				totalamount += totallist.price;
 			}
-			totalDiv.append("SEK " + totalamount)
+			totalDiv.append("SEK " + totalamount * model.getNumberOfGuests());
 
 			// prints the preparation text
 			prepDiv = container.find("#preparation")

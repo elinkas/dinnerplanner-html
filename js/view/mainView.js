@@ -23,15 +23,20 @@ var MainView = function (container, model) {
 			searchResultsDiv.append('<div class="dishButton" id="img' + dishes[dish].id + '"><div class="col-md-2"><img src="./images/' + dishes[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + dishes[dish].name +  ' </figcaption></div></div>');
 		}
 		this.dishButton = container.find(".dishButton");
+
 	}
 
 	this.filter = container.find("");
 	this.e = container.find("");
 
+	this.redo = function(){
+		
+	}
+
 	this.searchButton = container.find("#searchButton");
-	this.update();
+	//this.update();
 	model.addObserver(this);
-	this.update();
+	//this.update();
 
    /** 
 	*
