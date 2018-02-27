@@ -26,17 +26,11 @@ var MainView = function (container, model) {
 
 	}
 
-	this.filter = container.find("");
-	this.e = container.find("");
-
-	this.redo = function(){
-		
-	}
+	this.filter = container.find("textField");
+	this.e = container.find("dropdown");
 
 	this.searchButton = container.find("#searchButton");
-	//this.update();
 	model.addObserver(this);
-	//this.update();
 
    /** 
 	*
