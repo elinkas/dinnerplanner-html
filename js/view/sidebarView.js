@@ -30,19 +30,65 @@ var SidebarView = function (container, model) {
 	 * or some other way of searching only among the containers child elements. In this way you
 	 * make your view code modular and ensure it dosn't break if by mistake somebody else
 	 * in some other view gives the same ID to another element.
-	 * 
+	 *  
 	 */
 	var numberOfGuests = container.find("#numberOfGuests");
-	
+	var menu = [];
+	var dishListDiv;
+	var dishList = [];
 
-	this.update = function(id){
-		numberOfGuests.html(model.getNumberOfGuests()); 
-		if(!isNaN(id)){
-			var dishListDiv = container.find("#menuDetails");
-			dish = model.getDish(id);
-			dishListDiv.append(dish.name + '&emsp;' + model.getPrice() * model.getNumberOfGuests() + '<br>');
+	this.update = function(){
+		numberOfGuests.html(model.getNumberOfGuests());
+		dishListDiv = container.find("#menuDetails");
+
+		menu = model.getFullMenu();
+		dishListDiv.html("");
+		dishListDiv.html("");
+		dishListDiv.html("");
+		dishListDiv.html("");
+
+		var price = 0;
+		for(key in menu){
+			dish = model.getDish(menu[key]);
+			var pricelist = [];
+			for(var i=0; i< dish.ingredients.length; i++){
+				pricelist = dish.ingredients[i]
+				var num = model.getNumberOfGuests();
+				price += pricelist.price;
+			}
+			//dishListDiv.append(dish.name + '&emsp;' + price * model.getNumberOfGuests() + '<br>');
+			dishList.push(dish.name + '&emsp;' + price * model.getNumberOfGuests() + '<br>');
+
+			price = 0;
 		}
+		var unique = dishList.filter((v, i, a) => a.indexOf(v) === i);
+		for(key in dishList){
+			dishListDiv.append(unique[key]);
+		}
+		dishList = [];
 	}
+
+		
+/**
+		var id = model.getAddedDish(); 
+		if(id>0){
+			dishListDiv = container.find("#menuDetails");
+			dishListDiv.html("");
+			if(model.getClickedDish() == model.getAddedDish()){
+				dishListDiv.html("");
+			}
+			dish = model.getDish(id);
+
+			dishList.push(dish.name + '&emsp;' + model.getPrice() * model.getNumberOfGuests() + '<br>');
+			var unique = dishList.filter((v, i, a) => a.indexOf(v) === i);
+			for(key in dishList){
+				dishListDiv.append(unique[key]);
+			}
+			
+			//dishListDiv.append(dish.name + '&emsp;' + model.getPrice() * model.getNumberOfGuests() + '<br>');
+		}
+		var unique = dishList.filter((v, i, a) => a.indexOf(v) === i); 
+	}*/
 
 	model.addObserver(this);
 
@@ -58,7 +104,6 @@ var SidebarView = function (container, model) {
 
 	this.show = function(){
 		var a = container.find("#sideBar2");
-		this.update();
 		a.show();	
 	}
 }

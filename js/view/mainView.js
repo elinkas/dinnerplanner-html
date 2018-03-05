@@ -44,6 +44,6 @@ var MainView = function (container, model) {
 
 	this.show = function(){
 		var a = container.find("#mainWindow2");
-		a.show()	
+		a.show();	
 	}
 }

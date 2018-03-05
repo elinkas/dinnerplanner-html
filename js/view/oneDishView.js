@@ -1,11 +1,17 @@
+var totalamount = 0;
+
 var OneDishView = function (container, model) {
 
-	this.update = function(id){
-		if(id == null){
-			id = 0;
+	//var totalamount = 0;
+	this.update = function(){
+		if(model.getClickedDish() == null){
+			var id = 0;
 		}else{ 
+			totalamount = 0;
+			var id = model.getClickedDish();
+			console.log("id " + id);
 			//appends the image of the chosen dish to html-div "imglist"
-			dish = model.getDish(id.substring(3));
+			dish = model.getDish(id);
 			oneDishDiv = container.find("#imglist")
 			oneDishDiv.html("");
 			oneDishDiv.append('<h1>' + dish.name + '</h1>')
@@ -44,7 +50,6 @@ var OneDishView = function (container, model) {
 			//prints the total price of all the ingredients * amount of guests
 			totalDiv = container.find("#total")
 			totalDiv.html("")
-			var totalamount = 0;
 			var totallist = [];
 			for(var i=0; i< dish.ingredients.length; i++){
 				totallist = dish.ingredients[i];
@@ -57,7 +62,7 @@ var OneDishView = function (container, model) {
 			prepDiv.html("")
 			prepDiv.append('<h1>Preparation</h1><br>' + dish.description)
 			
-			model.setPrice(totalamount);
+			//model.setPrice(totalamount);
 		}
 	}
 
@@ -66,10 +71,9 @@ var OneDishView = function (container, model) {
 	this.addButton = container.find("#addButton");
 	this.backButton = container.find("#backButton");
 
-	this.update();
 
-	this.show = function(id){
-		this.update(id);
+	this.show = function(){
+//		this.update();
 		var a = container.find("#oneDish2");
 		a.show();
 	}

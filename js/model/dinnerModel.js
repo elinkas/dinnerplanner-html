@@ -3,14 +3,15 @@ var menu = [];
 var ingred = [];
 var menuID = [];
 var priceList = [];
-var currentDish;
+var clickedDish;
+var addedDish;
 var totPrice;
  
 var confDinner = function(){
 	console.log("dinner is confirmed");
 }
 
-var DinnerModel = function() {
+var DinnerModel = function() { 
 	var observers = [];
 	var filter = "";
 	var type = '';
@@ -54,14 +55,26 @@ var DinnerModel = function() {
 		return type;
 	}
 
-	this.getCurrentDish = function(){
-		return currentDish;
+	//den vi klickar på
+	this.getClickedDish = function(){
+		return clickedDish;
 	}
 
-	this.setCurrentDish = function(id){
-		currentDish = id;
+	this.setClickedDish = function(id){
+		clickedDish = id;
 		notifyObservers();
-		return currentDish;
+		return clickedDish;
+	}
+
+	this.getAddedDish = function(){
+		return addedDish;
+	}
+
+	//den vi lägger till i menyn
+	this.setAddedDish = function(id){
+		addedDish = id;
+		notifyObservers();
+		return addedDish;
 	}
 
 	this.addObserver = function(observer) { 
@@ -156,7 +169,6 @@ var DinnerModel = function() {
 					ingredList=dishes[key].ingredients;
 					for(elem in ingredList){
 						price += ingredList[elem].price;
-						console.log("price " + price);
 					}
 				}
 			}

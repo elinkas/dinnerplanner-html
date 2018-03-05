@@ -20,7 +20,7 @@ $(function() {
 
 	var printRecipeView = new PrintRecipeView($("#printRecipe"), model);
 	var printRecipeViewController = new PrintRecipeViewController(printRecipeView,model);
- 
+  
 
 	// Global function, hiding all the views when starting the application
 	showWelcomeScreen = function(){
@@ -53,12 +53,23 @@ $(function() {
 		printRecipeView.hide();
 	}
 
-	// Detail view of dish
-	showOneDish = function(id){
+	hideOneDish = function(){
 		startView.hide();
 		sidebarView.show();
 		mainView.hide();
-		oneDishView.show(id);
+		oneDishView.hide();
+		confirmDinnerView.hide();
+		printRecipeView.hide();
+	}
+
+	// Detail view of dish
+	//showOneDish = function(id){
+	showOneDish = function(){
+		startView.hide();
+		sidebarView.show();
+		mainView.hide();
+		oneDishView.show();
+		//oneDishView.show(id);
 		confirmDinnerView.hide();
 		printRecipeView.hide();
 	}

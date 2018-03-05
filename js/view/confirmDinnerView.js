@@ -23,7 +23,7 @@ var ConfirmDinnerView = function (container, model) {
 		totalMenuPrice.html(model.getTotalMenuPrice()); 
 	}
 
-	this.update();
+	//this.update();
 	model.addObserver(this);
 
 	this.hide = function() {
