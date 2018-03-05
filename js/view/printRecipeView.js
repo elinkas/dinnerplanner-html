@@ -5,9 +5,18 @@ var PrintRecipeView = function (container, model) {
 
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
-		dishes = model.getFullMenu(); // collect all dishes from menu
+		alldishes = model.getFullMenu(); // collect all dishes from menu
+
+		console.log(alldishes);
+		var dishes = [];
+		$.each(alldishes, function(i, el){
+		    if($.inArray(el, dishes) === -1) dishes.push(el);
+		});
+		console.log(dishes);
 
 		divDiv = container.find("#recipeList");
+		divDiv.html("");
+		divDiv.html("");
 		divDiv.html("");
 
 
@@ -39,7 +48,6 @@ var PrintRecipeView = function (container, model) {
 		}
 	}
 
-	this.update();
 	model.addObserver(this);
 
 	this.show = function(id){
