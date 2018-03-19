@@ -68,29 +68,9 @@ var SidebarView = function (container, model) {
 		dishList = [];
 	}
 
-		
-/**
-		var id = model.getAddedDish(); 
-		if(id>0){
-			dishListDiv = container.find("#menuDetails");
-			dishListDiv.html("");
-			if(model.getClickedDish() == model.getAddedDish()){
-				dishListDiv.html("");
-			}
-			dish = model.getDish(id);
-
-			dishList.push(dish.name + '&emsp;' + model.getPrice() * model.getNumberOfGuests() + '<br>');
-			var unique = dishList.filter((v, i, a) => a.indexOf(v) === i);
-			for(key in dishList){
-				dishListDiv.append(unique[key]);
-			}
-			
-			//dishListDiv.append(dish.name + '&emsp;' + model.getPrice() * model.getNumberOfGuests() + '<br>');
-		}
-		var unique = dishList.filter((v, i, a) => a.indexOf(v) === i); 
-	}*/
-
 	model.addObserver(this);
+
+	this.update();
 
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");

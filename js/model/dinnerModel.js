@@ -1,7 +1,7 @@
 //DinnerModel Object constructor
 var menu = [];
 var ingred = [];
-var menuID = [];
+var menuID = []; 
 var priceList = [];
 var clickedDish;
 var addedDish;
@@ -98,6 +98,7 @@ var DinnerModel = function() {
 		return numGuests;
 
 	}
+	this.setNumberOfGuests(4);
 	
 	//Return of guests.
 	this.getNumberOfGuests = function() {
@@ -214,7 +215,6 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
-		//console.log("hej1");
 	  	return dish.type == type && found;
 	  });	
 	}
@@ -480,7 +480,7 @@ var DinnerModel = function() {
 		}
 	];
 
-	this.setNumberOfGuests(0);
+	//this.setNumberOfGuests(4);
 	//this.getNumberOfGuests();
 	//this.getSelectedDish('dessert');
 	//this.getFullMenu();

@@ -7,12 +7,11 @@ var PrintRecipeView = function (container, model) {
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		alldishes = model.getFullMenu(); // collect all dishes from menu
 
-		console.log(alldishes);
 		var dishes = [];
 		$.each(alldishes, function(i, el){
 		    if($.inArray(el, dishes) === -1) dishes.push(el);
 		});
-		console.log(dishes);
+		//console.log(dishes);
 
 		divDiv = container.find("#recipeList");
 		divDiv.html("");

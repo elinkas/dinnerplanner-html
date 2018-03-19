@@ -8,21 +8,22 @@ var ConfirmDinnerView = function (container, model) {
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		IDmenu = model.getFullMenu();
+		console.log(IDmenu);
 		var dishes = [];
 		$.each(IDmenu, function(i, el){
 		    if($.inArray(el, dishes) === -1) dishes.push(el);
 		});
+		//console.log(dishes);
 		menu=[];
 
 		imageListDiv = container.find("#imageList")
 		imageListDiv.html("");
 		for (dish in dishes) { 
-			menu.push(model.getDish(IDmenu[dish]));
+			menu.push(model.getDish(dishes[dish]));
 		}
 		for (dish in menu){
 			imageListDiv.append('<div id="img' + menu[dish].id + '"><div class="col-md-2"> <img src="./images/' + menu[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + menu[dish].name +  ' </figcaption></div></div>');
 		}
-		 
 
 		totalMenuPrice.html(model.getTotalMenuPrice()); 
 	}
