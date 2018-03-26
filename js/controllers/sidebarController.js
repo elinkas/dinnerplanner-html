@@ -3,7 +3,7 @@ var SidebarController = function(mainView, view, model ) {
  	model.setNumberOfGuests(model.getNumberOfGuests() + 1);
  	mainView.searchButton.click();
  });
- 
+
  view.minusButton.click(function(){
  	model.setNumberOfGuests(model.getNumberOfGuests() - 1);
  	mainView.searchButton.click();

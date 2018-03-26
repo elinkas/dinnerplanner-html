@@ -1,16 +1,13 @@
 var OneDishViewController = function(mainView, sidebarView, view, model) {
 
 	view.addButton.on("click", function(){
-		// add chosen dish to menu
-		//model.setPrice(totalamount);
 		var id = model.getClickedDish();
-		//model.setAddedDish(id);
-
-		//model.setPrice(totalamount);
-		console.log("total " + totalamount);
-		//sidebarView.update();
-		console.log("id2 " + id);
-		model.addDishToMenu(id);
+		//console.log("id " + id)
+		//console.log("saved id " + id)
+		//totalamount per person
+		//model.addDishToMenu(id);
+		model.addDishToMenu();
+		//console.log(model.getFullMenu()); 
 
 	});
 	view.backButton.on("click", function(){

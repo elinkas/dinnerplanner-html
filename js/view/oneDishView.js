@@ -2,16 +2,66 @@ var totalamount = 0;
 
 var OneDishView = function (container, model) {
 
-	//var totalamount = 0;
 	this.update = function(){
 		if(model.getClickedDish() == null){
 			var id = 0;
 		}else{ 
 			totalamount = 0;
 			var id = model.getClickedDish();
-			console.log("id " + id);
-			//appends the image of the chosen dish to html-div "imglist"
-			dish = model.getDish(id);
+
+			// 20 mars lab 3
+			model.getDish(id, function(data){
+				var dish = data;
+				//data.results[key].id
+				//console.log("dish")
+				//console.log(dish);
+				oneDishDiv = container.find("#imglist")
+				oneDishDiv.html("");
+				oneDishDiv.append('<h1>' + dish.title + '</h1>')
+				oneDishDiv.append('<div id="image' + dish.id + '"><div class="col-md-2"><img src="' + dish.image + '" alt="Image" width="100" height="100"></div></div>');
+
+				//prints quantity of ingredients
+				quantityDiv = container.find("#quantity")
+				quantityDiv.html("")
+				var quantitylist = [];
+				for(var i=0; i< dish.extendedIngredients.length; i++){
+					quantitylist = dish.extendedIngredients[i];
+					var num = model.getNumberOfGuests();
+					var quant = quantitylist.amount * num;
+					quantityDiv.append('' + quant.toFixed(2) + ' ' + quantitylist.unit + '<br>');
+				}	
+
+				// prints name of ingredients
+				ingredDiv = container.find("#ingredients")
+				ingredDiv.html("")
+				var ingredlist = [];
+				for(var i=0; i< dish.extendedIngredients.length; i++){
+					ingredlist = dish.extendedIngredients[i]
+					ingredDiv.append('' + ingredlist.name + '<br>')
+				}	
+
+				//prints the total price of all the ingredients * amount of guests
+				totalDiv = container.find("#total")
+				totalDiv.html("")
+
+				totalDiv.append("SEK " + dish.pricePerServing * model.getNumberOfGuests());
+
+				// prints the preparation text
+				prepDiv = container.find("#preparation")
+				prepDiv.html("")
+				if(dish.instructions == null){
+					dish.instructions = "there are no instructions for this dish"
+				}
+				prepDiv.append('<h1>Preparation</h1><br>' + dish.instructions)
+
+
+			}, function(){
+				// Do something when error'
+			});
+		}
+	}
+
+/*
 			oneDishDiv = container.find("#imglist")
 			oneDishDiv.html("");
 			oneDishDiv.append('<h1>' + dish.name + '</h1>')
@@ -62,9 +112,7 @@ var OneDishView = function (container, model) {
 			prepDiv.html("")
 			prepDiv.append('<h1>Preparation</h1><br>' + dish.description)
 			
-			//model.setPrice(totalamount);
-		}
-	}
+		}*/ 
 
 	model.addObserver(this);
 
@@ -73,7 +121,6 @@ var OneDishView = function (container, model) {
 
 
 	this.show = function(){
-//		this.update();
 		var a = container.find("#oneDish2");
 		a.show();
 	}

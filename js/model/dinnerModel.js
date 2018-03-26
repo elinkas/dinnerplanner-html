@@ -1,11 +1,19 @@
 //DinnerModel Object constructor
-var menu = [];
+var menu = []; // i menu lägger vi till objeketen när vi har klickat på "add to menu"
+var menuNames = [];
+var allClickedDishes = []; // i allClieckDishes lägger vi till objekten när vi har klickat på en specifik maträtt
+
+allNames = [];
+allPrices = [];
+
 var ingred = [];
 var menuID = []; 
 var priceList = [];
 var clickedDish;
 var addedDish;
 var totPrice;
+
+
  
 var confDinner = function(){
 	console.log("dinner is confirmed");
@@ -15,6 +23,15 @@ var DinnerModel = function() {
 	var observers = [];
 	var filter = "";
 	var type = '';
+
+	this.getAllNames = function(){
+		return allNames;
+	}
+
+	this.getAllPrices = function(){
+		return allPrices;
+	}
+
 
 	this.getName = function(){
 		return name;
@@ -106,7 +123,7 @@ var DinnerModel = function() {
 	}
 
 	//Return the dish that is on the menu for selected type.
-	this.getSelectedDish = function(type) {
+/*	this.getSelectedDish = function(type) {
 		if(type == 'dessert'){
 			for(i=0; i<menu.length;i++){
 				if(menu[i] > 199){
@@ -130,24 +147,19 @@ var DinnerModel = function() {
 				return dishes[key];
 			}
 		}
-	}
+	}*/
 
 	//Return all the dishes on the menu.
 	this.getFullMenu = function() {
-		for (i=0; i<menu.length; i++){
-			var id2 = menu[i];
-			for(key in dishes){
-				if(dishes[key].id == id2) {
-					menuID.push(dishes[key].id);
-					//console.log(menuNames);
-				}
-			}
-		}
-		return menuID;
+		return menu;
+	}
+
+	this.getMenuNames = function(){
+		return menuNames;
 	}
 
 	//Return all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
+	/*this.getAllIngredients = function() {
 		for(i=0; i<menu.length;i++){
 			var selected = menu[i];
 			for(key in dishes){
@@ -158,10 +170,10 @@ var DinnerModel = function() {
 				}
 			}
 		}
-	}
+	}*/
 
 	//Return the total price of the menu (all the ingredients multiplied by number of guests).
-	this.getTotalMenuPrice = function() {
+	/*this.getTotalMenuPrice = function() {
 		var price = 0;
 		for(item in menu){
 			var selected = menu[item];
@@ -175,33 +187,50 @@ var DinnerModel = function() {
 			}
 		}
 		return price*numGuests;
-	}
+	}*/
 
 	//Add dish to menu.
-	this.addDishToMenu = function(id) {
-		var result = dishes.filter(function( element ) {
-		  if(element.id == id){
-		  	menu.push(id);
-		  }
-		});
-		notifyObservers();
+	this.addDishToMenu = function() {
+		var dish = allClickedDishes[allClickedDishes.length - 1] ;
+		menu.push(dish);
+		console.log(menu)
+
+		/*var dish = allClickedDishes[allClickedDishes.length - 1] ;
+		if(allClickedDishes.length > 2){
+			if(dish.title === allClickedDishes[allClickedDishes.length - 2].title){
+
+			}else{
+		//console.log("dish ")
+		//console.log(dish)
+				menu.push(dish);
+				menuNames.push(dish.title);
+				//console.log("menu names " + menuNames[0]);
+				notifyObservers();
+			}
+		}
+		else{
+			menu.push(dish);
+			menuNames.push(dish.title);
+				//console.log("menu names " + menuNames[0]);
+			notifyObservers();
+		}*/
 	}
 
 	//Remove dish from menu.
-	this.removeDishFromMenu = function(id) {
+	/*this.removeDishFromMenu = function(id) {
 		for(i=0 ; i<menu.length; i++){
 			if (menu[i] == id){
 				menu.splice(i,1);
 			}
 		}
 		notifyObservers();
-	}
+	}*/
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned.
-	this.getAllDishes = function (type,filter) {
-	  return dishes.filter(function(dish) {
+	/**this.getAllDishes = function (type,filter) {
+	return dishes.filter(function(dish) {
 		var found = true;
 		if(filter){
 			found = false;
@@ -217,16 +246,66 @@ var DinnerModel = function() {
 		}
 	  	return dish.type == type && found;
 	  });	
+	}  */ 
+
+	//main course, side dish, dessert, appetizer, salad, bread, breakfast, soup, beverage, sauce, or drink.
+
+	this.getAllDishes = function (type, filter, callback, errorCallback) {
+		$.ajax( {
+			// SPECIAL CASE if there is no filter.
+		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?type="' + String(type) + '"&query="' + String(filter) + '"',
+		   
+		   headers: {
+		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+		   },
+		   success: function(data) {
+		   	console.log("success getting att dishes from API")
+		    callback(data);
+		   },
+		   error: function(error) {
+		   	console.log("error getting all dishes from API")
+		    errorCallback(error)
+		   }
+		});
 	}
 
 	//return a dish of specific ID.
-	this.getDish = function (id) {
+	/*this.getDish = function (id) {
 	  for(key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key];
 			}
 		}
+	}*/
+
+	this.getDish = function(id, callback, errorCallback){
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information',
+			headers: {
+				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+			},
+			success: function(data) {
+				allClickedDishes.push(data);
+				allNames.push(data.title);
+				allPrices.push(data.pricePerServing);
+				//console.log(allNames);
+				//console.log(allPrices);
+				//console.log(allClickedDishes);
+			   	//plocka ut image, description, ingredients osv. appenda här?
+				//console.log(data)
+
+				//console.log("success getting one dish from API")
+				callback(data)
+			},
+			error: function(error) {
+			   	//console.log("error getting one dish from API")
+			    errorCallback(error)
+			}
+		});
 	}
+
+
+
 
 
 	// the dishes variable contains an array of all the 

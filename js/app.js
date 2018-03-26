@@ -69,7 +69,6 @@ $(function() {
 		sidebarView.show();
 		mainView.hide();
 		oneDishView.show();
-		//oneDishView.show(id);
 		confirmDinnerView.hide();
 		printRecipeView.hide();
 	}

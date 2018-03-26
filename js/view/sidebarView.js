@@ -1,3 +1,6 @@
+var menuDishTitle = [];
+var menuDishPrice = [];
+var menuDishImages = [];
 /** SidebarView Object constructor
  * 
  * This object represents the code for SidebarView. 
@@ -37,20 +40,51 @@ var SidebarView = function (container, model) {
 	var dishListDiv;
 	var dishList = [];
 
+	var oldMenu = [];
+	var newMenu = [];
+
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests());
 		dishListDiv = container.find("#menuDetails");
-
+		//dishListDiv.html("");
 		menu = model.getFullMenu();
-		dishListDiv.html("");
-		dishListDiv.html("");
-		dishListDiv.html("");
-		dishListDiv.html("");
+		
+/*		console.log(oldMenu);
+		var menu = [];
+		$.each(oldMenu, function(i, el){
+		    if($.inArray(el, menu) === -1) menu.push(el);
+		});
+		console.log(menu)*/
 
+		if(menu.length > 0){
+			dishListDiv.html("");
+			menuDishTitle.push(menu[0].title);
+			menuDishPrice.push(menu[0].pricePerServing);
+			menuDishImages.push(menu[0].image)
+
+			oldMenu.push(menu[0].title + '&emsp;' + menu[0].pricePerServing * model.getNumberOfGuests() + '<br>')
+			
+			uniqueArray = oldMenu.filter(function(item, pos) {
+			    return oldMenu.indexOf(item) == pos;
+			})
+			for(key in uniqueArray){
+				dishListDiv.append(uniqueArray[key]);
+			}
+			
+		}
+		/*console.log("leng " + menuDishTitle.length)
+		for (key in menuDishTitle){
+			console.log(menuDishTitle[key])
+			//dishListDiv.append("hej");
+			dishListDiv.append(menuDishTitle[key] + '&emsp;' + menuDishPrice * model.getNumberOfGuests() );
+		}*/
 		var price = 0;
-		for(key in menu){
-			dish = model.getDish(menu[key]);
-			var pricelist = [];
+
+		//for(key in menu){
+			//dish = model.getDish(menu[key]);
+			//console.log("menu:");
+			//console.log(menu);
+			/*var pricelist = [];
 			for(var i=0; i< dish.ingredients.length; i++){
 				pricelist = dish.ingredients[i]
 				var num = model.getNumberOfGuests();
@@ -59,13 +93,13 @@ var SidebarView = function (container, model) {
 			//dishListDiv.append(dish.name + '&emsp;' + price * model.getNumberOfGuests() + '<br>');
 			dishList.push(dish.name + '&emsp;' + price * model.getNumberOfGuests() + '<br>');
 
-			price = 0;
-		}
-		var unique = dishList.filter((v, i, a) => a.indexOf(v) === i);
-		for(key in dishList){
+			price = 0;*/
+		//}
+		//var unique = dishList.filter((v, i, a) => a.indexOf(v) === i);
+		/*for(key in dishList){
 			dishListDiv.append(unique[key]);
 		}
-		dishList = [];
+		dishList = [];*/
 	}
 
 	model.addObserver(this);

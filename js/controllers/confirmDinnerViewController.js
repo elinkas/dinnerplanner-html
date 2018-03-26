@@ -8,4 +8,4 @@ var ConfirmDinnerViewController = function(mainView, view, model) {
  view.printButton.click(function(){
  	showPrintedRecipe();
  });
-}  
+} 

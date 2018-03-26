@@ -3,6 +3,7 @@ var PrintRecipeView = function (container, model) {
 	var numberOfGuests = container.find("#numberOfGuests");
 	this.goBackButton = container.find("#goBackButton2");
 
+	var menu = model.getFullMenu();
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		alldishes = model.getFullMenu(); // collect all dishes from menu
@@ -18,7 +19,16 @@ var PrintRecipeView = function (container, model) {
 		divDiv.html("");
 		divDiv.html("");
 
+		// för alla rätter i menyn
+		// skriv ut namn, bild, preparation, description
 
+		console.log("length of menu " + alldishes.length)
+		for(key in alldishes){
+			console.log("menu menuuuu");
+		}
+
+/*
+		model.
 		for(dish in dishes){ // for each dish in menu
 			dishObject = model.getDish(dishes[dish]); // collect details about this dish and append to html
 			divDiv.append('<div class="row">' + 
@@ -44,7 +54,7 @@ var PrintRecipeView = function (container, model) {
 							'</div>' +
 						'</div>' +
 					'</div><br><br><br>');
-		}
+		}*/
 	}
 
 	model.addObserver(this);

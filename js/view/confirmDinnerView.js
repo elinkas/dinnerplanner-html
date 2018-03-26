@@ -8,7 +8,7 @@ var ConfirmDinnerView = function (container, model) {
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		IDmenu = model.getFullMenu();
-		console.log(IDmenu);
+		//console.log(IDmenu);
 		var dishes = [];
 		$.each(IDmenu, function(i, el){
 		    if($.inArray(el, dishes) === -1) dishes.push(el);
@@ -18,17 +18,22 @@ var ConfirmDinnerView = function (container, model) {
 
 		imageListDiv = container.find("#imageList")
 		imageListDiv.html("");
-		for (dish in dishes) { 
-			menu.push(model.getDish(dishes[dish]));
+		//här borde vi börja appenda alla titlar, bilder och pris
+		// menuDishTitle i sidebar view
+		for (key in menuDishImages){
+			imageListDiv.append('<div id="img"><div class="col-md-2"> <img src="' + menuDishImages[key] + '" alt="Image" width="100" height="100"><figcaption>' + menuDishTitle[key] + ' </figcaption></div></div>');
 		}
-		for (dish in menu){
-			imageListDiv.append('<div id="img' + menu[dish].id + '"><div class="col-md-2"> <img src="./images/' + menu[dish].image + '" alt="Image" width="100" height="100"><figcaption>' + menu[dish].name +  ' </figcaption></div></div>');
+		totalDiv = container.find('#total');
+		var totalPrice = 0;
+		console.log("menu " + menuDishPrice);
+		console.log("num" + numberOfGuests)
+		for (key in menuDishPrice){
+			totalPrice += menuDishPrice[key];
 		}
-
-		totalMenuPrice.html(model.getTotalMenuPrice()); 
+		totalMenuPrice.html(totalPrice * model.getNumberOfGuests()); 
+		//console.log("pris " + totalPrice * numberOfGuests);
+		//totalDiv.append(totalPrice * numberOfGuests);
 	}
-
-	//this.update();
 	model.addObserver(this);
 
 	this.hide = function() {
