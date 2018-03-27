@@ -1,5 +1,5 @@
 
-var MainViewController = function(view, model ) {
+var MainViewController = function(view, model) {
 
 	view.searchButton.on("click", function(){
 		//get the selected type & filter from user input
@@ -12,21 +12,9 @@ var MainViewController = function(view, model ) {
 		view.update();
 
 		view.searchResultsDiv.on('click', '.dishButton', function(){
-			//console.log("click");
 			var id = this.id.substring(3);
 			model.setClickedDish(id);
-			//console.log("id for clicked dish: " + id);
 	 		showOneDish();
 		})
-
-		/*view.dishButton.each(function(i, el){
-			el.addEventListener("click", function(){
-				//send the id-nr of selected dish to ShowOneDish
-				console.log("click");
-				var id = el.id.substring(3);
-				model.setClickedDish(id);
-	 			showOneDish();
-	 		})
-		});*/
 	});
 }

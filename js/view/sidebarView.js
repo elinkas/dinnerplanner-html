@@ -1,6 +1,7 @@
 var menuDishTitle = [];
 var menuDishPrice = [];
 var menuDishImages = [];
+var menuDishPrep = [];
 /** SidebarView Object constructor
  * 
  * This object represents the code for SidebarView. 
@@ -49,8 +50,7 @@ var SidebarView = function (container, model) {
 		//dishListDiv.html("");
 		menu = model.getFullMenu();
 		
-/*		console.log(oldMenu);
-		var menu = [];
+/*		var menu = [];
 		$.each(oldMenu, function(i, el){
 		    if($.inArray(el, menu) === -1) menu.push(el);
 		});
@@ -61,9 +61,10 @@ var SidebarView = function (container, model) {
 			menuDishTitle.push(menu[0].title);
 			menuDishPrice.push(menu[0].pricePerServing);
 			menuDishImages.push(menu[0].image)
+			menuDishPrep.push(menu[0].instructions)
 
 			oldMenu.push(menu[0].title + '&emsp;' + menu[0].pricePerServing * model.getNumberOfGuests() + '<br>')
-			
+
 			uniqueArray = oldMenu.filter(function(item, pos) {
 			    return oldMenu.indexOf(item) == pos;
 			})
@@ -99,12 +100,12 @@ var SidebarView = function (container, model) {
 		/*for(key in dishList){
 			dishListDiv.append(unique[key]);
 		}
-		dishList = [];*/
+		dishList = [];*/	
 	}
 
 	model.addObserver(this);
 
-	this.update();
+	//this.update();
 
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");

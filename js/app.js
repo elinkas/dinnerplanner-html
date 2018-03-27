@@ -13,7 +13,7 @@ $(function() {
 	var sidebarController = new SidebarController(mainView, sidebarView, model);
 
 	var oneDishView = new OneDishView($("#oneDish"), model);
-	var oneDishViewController = new OneDishViewController(mainView, sidebarView, oneDishView,model);
+	var oneDishViewController = new OneDishViewController(mainView, sidebarView, oneDishView, model);
 
 	var confirmDinnerView = new ConfirmDinnerView($("#confirmDinner"), model);
 	var confirmDinnerViewController = new ConfirmDinnerViewController(mainView, confirmDinnerView,model);

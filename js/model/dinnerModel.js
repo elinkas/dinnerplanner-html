@@ -108,7 +108,6 @@ var DinnerModel = function() {
 
 	}
  	
- 	//Set number of guests.
 	this.setNumberOfGuests = function(num) {
 		numGuests = num;
 		notifyObservers();
@@ -117,7 +116,7 @@ var DinnerModel = function() {
 	}
 	this.setNumberOfGuests(4);
 	
-	//Return of guests.
+	//Return number of guests.
 	this.getNumberOfGuests = function() {
 		return numGuests;
 	}
@@ -189,11 +188,11 @@ var DinnerModel = function() {
 		return price*numGuests;
 	}*/
 
-	//Add dish to menu.
 	this.addDishToMenu = function() {
-		var dish = allClickedDishes[allClickedDishes.length - 1] ;
+		var num = allClickedDishes.length - 1;
+		var dish = allClickedDishes[num];
 		menu.push(dish);
-		console.log(menu)
+		notifyObservers();
 
 		/*var dish = allClickedDishes[allClickedDishes.length - 1] ;
 		if(allClickedDishes.length > 2){
@@ -258,14 +257,21 @@ var DinnerModel = function() {
 		   headers: {
 		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
 		   },
+		   beforeSend: function() {
+		   		$("#loading").show();
+		   },
 		   success: function(data) {
-		   	console.log("success getting att dishes from API")
+		   	//console.log("success getting all dishes from API")
 		    callback(data);
 		   },
 		   error: function(error) {
-		   	console.log("error getting all dishes from API")
+		   	//console.log("error getting all dishes from API")
 		    errorCallback(error)
-		   }
+		    alert("Something is wrong :(");
+		   },
+		  	complete: function() {
+    			$("#loading").hide();
+   			}
 		});
 	}
 
@@ -284,29 +290,26 @@ var DinnerModel = function() {
 			headers: {
 				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
 			},
+			beforeSend: function() {
+		   		$("#loading").show();
+		   	},
 			success: function(data) {
 				allClickedDishes.push(data);
 				allNames.push(data.title);
 				allPrices.push(data.pricePerServing);
-				//console.log(allNames);
-				//console.log(allPrices);
-				//console.log(allClickedDishes);
-			   	//plocka ut image, description, ingredients osv. appenda här?
-				//console.log(data)
-
 				//console.log("success getting one dish from API")
 				callback(data)
 			},
 			error: function(error) {
 			   	//console.log("error getting one dish from API")
 			    errorCallback(error)
-			}
+			    alert("Something is wrong :(");
+			},
+			complete: function() {
+    			$("#loading").hide();
+   			}
 		});
 	}
-
-
-
-
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
@@ -558,18 +561,6 @@ var DinnerModel = function() {
 			}]
 		}
 	];
-
-	//this.setNumberOfGuests(4);
-	//this.getNumberOfGuests();
-	//this.getSelectedDish('dessert');
-	//this.getFullMenu();
-	//this.getAllIngredients();
-	//this.addDishToMenu(3);
-	//this.addDishToMenu(100);
-	//this.addDishToMenu(202);
-	//this.getTotalMenuPrice();
-	//this.removeDishFromMenu(3);
-
 }
 
 var numberOfGuests = function(){
