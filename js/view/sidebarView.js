@@ -37,18 +37,17 @@ var SidebarView = function (container, model) {
 	 *  
 	 */
 	var numberOfGuests = container.find("#numberOfGuests");
-	var menu = [];
+	//var menu;
 	var dishListDiv;
-	var dishList = [];
 
 	var oldMenu = [];
-	var newMenu = [];
+	var uniqueMeny = [];
 
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests());
 		dishListDiv = container.find("#menuDetails");
 		//dishListDiv.html("");
-		menu = model.getFullMenu();
+		var menu = model.getFullMenu();
 		
 /*		var menu = [];
 		$.each(oldMenu, function(i, el){
@@ -58,20 +57,43 @@ var SidebarView = function (container, model) {
 
 		if(menu.length > 0){
 			dishListDiv.html("");
-			menuDishTitle.push(menu[0].title);
-			menuDishPrice.push(menu[0].pricePerServing);
-			menuDishImages.push(menu[0].image)
-			menuDishPrep.push(menu[0].instructions)
+			//menuDishTitle.push(menu[0].title);
+			//menuDishPrice.push(menu[0].pricePerServing);
+			//menuDishImages.push(menu[0].image)
+			//menuDishPrep.push(menu[0].instructions)
+			//for(key in menu){
+			//	oldMenu.push(menu[key].title + '&emsp;' + menu[key].price * model.getNumberOfGuests() + '<br>')
 
-			oldMenu.push(menu[0].title + '&emsp;' + menu[0].pricePerServing * model.getNumberOfGuests() + '<br>')
-
-			uniqueArray = oldMenu.filter(function(item, pos) {
-			    return oldMenu.indexOf(item) == pos;
-			})
-			for(key in uniqueArray){
-				dishListDiv.append(uniqueArray[key]);
+			loop1:
+				for(var i=0; i<menu.length-1; i++){
+				
+			loop2:
+				for (var j=0; j<menu.length-1; j++){
+					console.log(menu[i].title)
+					if(i==j){
+						console.log(i)
+						oldMenu.push(menu[i].title + '&emsp;' + menu[i].price * model.getNumberOfGuests() + '<br>')
+						break loop1;
+					}
+					else if(menu[i].title==menu[j].title){
+						console.log("dublett");
+						break loop1;
+					}else{
+						console.log("ska vara med i menu");
+						oldMenu.push(menu[i].title + '&emsp;' + menu[i].price * model.getNumberOfGuests() + '<br>')
+					}
+				}
 			}
-			
+			console.log(oldMenu);
+			dishListDiv.append(oldMenu);
+				
+				/*uniqueMeny = oldMenu.filter(function(item, pos) {
+				    return oldMenu.indexOf(item) == pos;
+				})
+				for(key in uniqueMeny){
+					dishListDiv.append(uniqueMeny[key]);
+				}
+				}*/
 		}
 		/*console.log("leng " + menuDishTitle.length)
 		for (key in menuDishTitle){

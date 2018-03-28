@@ -54,7 +54,7 @@ var OneDishView = function (container, model) {
 
 
 			}, function(){
-				// Do something when error'
+				alert("oneDisView");
 			});
 		}
 	}

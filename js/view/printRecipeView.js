@@ -45,8 +45,8 @@ var PrintRecipeView = function (container, model) {
 
 	model.addObserver(this);
 
-	this.show = function(id){
-		this.update(id);
+	this.show = function(){
+		//this.update(id);
 		var a = container.find("#printRecipe2");
 		a.show();
 	}

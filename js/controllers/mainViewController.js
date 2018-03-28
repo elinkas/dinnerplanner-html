@@ -9,7 +9,7 @@ var MainViewController = function(view, model) {
 
 		model.setFilter(filter);
 		model.setType(type);
-		view.update();
+		//view.update();
 
 		view.searchResultsDiv.on('click', '.dishButton', function(){
 			var id = this.id.substring(3);

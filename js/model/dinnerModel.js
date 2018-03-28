@@ -191,7 +191,8 @@ var DinnerModel = function() {
 	this.addDishToMenu = function() {
 		var num = allClickedDishes.length - 1;
 		var dish = allClickedDishes[num];
-		menu.push(dish);
+		menu.push({'title': dish.title, 'price': dish.pricePerServing, 'image': dish.image, 'prep': dish.instructions});
+		//console.log(menu);
 		notifyObservers();
 
 		/*var dish = allClickedDishes[allClickedDishes.length - 1] ;
@@ -267,7 +268,7 @@ var DinnerModel = function() {
 		   error: function(error) {
 		   	//console.log("error getting all dishes from API")
 		    errorCallback(error)
-		    alert("Something is wrong :(");
+		    //alert("Something is wrong :(");
 		   },
 		  	complete: function() {
     			$("#loading").hide();
@@ -303,7 +304,7 @@ var DinnerModel = function() {
 			error: function(error) {
 			   	//console.log("error getting one dish from API")
 			    errorCallback(error)
-			    alert("Something is wrong :(");
+			    //alert("hej");
 			},
 			complete: function() {
     			$("#loading").hide();

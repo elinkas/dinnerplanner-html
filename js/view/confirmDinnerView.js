@@ -9,11 +9,10 @@ var ConfirmDinnerView = function (container, model) {
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		menu = model.getFullMenu();
 		var dishes = [];
-		
+
 		$.each(menu, function(i, el){
 		    if($.inArray(el, dishes) === -1) dishes.push(el);
 		});
-		menu=[];
 
 		imageListDiv = container.find("#imageList")
 		imageListDiv.html("");
