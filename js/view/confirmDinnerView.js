@@ -8,26 +8,21 @@ var ConfirmDinnerView = function (container, model) {
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		menu = model.getFullMenu();
-		var dishes = [];
-
-		$.each(menu, function(i, el){
-		    if($.inArray(el, dishes) === -1) dishes.push(el);
-		});
-
 		imageListDiv = container.find("#imageList")
 		imageListDiv.html("");
 
-		for (key in menuDishImages){
-			imageListDiv.append('<div id="img"><div class="col-md-2"> <img src="' + menuDishImages[key] + 
-				'" alt="Image" width="100" height="100"><figcaption>' + menuDishTitle[key] + ' </figcaption></div></div>');
+		for(key in menu){
+			imageListDiv.append('<div id="img"><div class="col-md-2"> <img src="' + menu[key].image + 
+				'" alt="Image" width="100" height="100"><figcaption>' + menu[key].title + ' </figcaption></div></div>');
 		}
 
 		totalDiv = container.find('#total');
 		var totalPrice = 0;
-		for (key in menuDishPrice){
-			totalPrice += menuDishPrice[key];
+		for (key in menu){
+			totalPrice += menu[key].price;
 		}
 
+		totalPrice.toFixed(2);
 		totalMenuPrice.html(totalPrice * model.getNumberOfGuests()); 
 	}
 

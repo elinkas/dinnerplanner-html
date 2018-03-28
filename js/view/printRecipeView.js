@@ -7,28 +7,24 @@ var PrintRecipeView = function (container, model) {
 		numberOfGuests.html(model.getNumberOfGuests()); 
 		menu = model.getFullMenu(); // collect all dishes from menu
 
-		var dishes = [];
-		$.each(menu, function(i, el){
-		    if($.inArray(el, dishes) === -1) dishes.push(el);
-		});
 		divDiv = container.find("#recipeList");
 		divDiv.html("");
 		divDiv.html("");
 		divDiv.html("");
 		
-		for(dish in menuDishImages){
+		for(dish in menu){
 			divDiv.append('<div class="row">' + 
 						'<div class ="col-md-2">' +
 							'<div id="image">' +
 								'<br><div id="image">' + 
-									'<img src="' + menuDishImages[dish] + '" alt="Image" width="100" height="100">' +
+									'<img src="' + menu[dish].image + '" alt="Image" width="100" height="100">' +
 								'</div>' +
 							'</div>' +
 						'</div>' +
 						
 						'<div class="col-md-4">' + 
 							'<div id="description">' +
-								'<h4>' + menuDishTitle[dish] + '</h4>' +
+								'<h4>' + menu[dish].title + '</h4>' +
 								'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat.' +
 							'</div>' +
 						'</div>' +
@@ -36,7 +32,7 @@ var PrintRecipeView = function (container, model) {
 						'<div class="col-md-6">' +
 							'<div id="preparation">' +
 								'<h4>PREPARATION </h4>' + 
-								menuDishPrep[dish] +
+								menu[dish].prep +
 							'</div>' +
 						'</div>' +
 					'</div><br><br><br>');
@@ -46,7 +42,6 @@ var PrintRecipeView = function (container, model) {
 	model.addObserver(this);
 
 	this.show = function(){
-		//this.update(id);
 		var a = container.find("#printRecipe2");
 		a.show();
 	}

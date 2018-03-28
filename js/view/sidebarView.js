@@ -1,7 +1,4 @@
-var menuDishTitle = [];
-var menuDishPrice = [];
-var menuDishImages = [];
-var menuDishPrep = [];
+
 /** SidebarView Object constructor
  * 
  * This object represents the code for SidebarView. 
@@ -17,117 +14,24 @@ var menuDishPrep = [];
  */ 
 var SidebarView = function (container, model) {
 	
-	/**
-	 * We use the @method find() on @var {jQuery object} container to look for various elements 
-	 * inside the view in orther to use them later on. For instance:
-	 * 
-	 * @var {jQuery object} numberOfGuests is a reference to the <span> element that 
-	 * represents the placeholder for where we want to show the number of guests. It's
-	 * a reference to HTML element (wrapped in jQuery object for added benefit of jQuery methods)
-	 * and we can use it to modify <span>, for example to populate it with dynamic data (for now 
-	 * only 'Hello world', but you should change this by end of Lab 1).
-	 * 
-	 * We use variables when we want to make the reference private (only available within) the
-	 * ExampleView.
-	 * 
-	 * IMPORTANT: Never use $('someSelector') directly in the views. Always use container.find
-	 * or some other way of searching only among the containers child elements. In this way you
-	 * make your view code modular and ensure it dosn't break if by mistake somebody else
-	 * in some other view gives the same ID to another element.
-	 *  
-	 */
 	var numberOfGuests = container.find("#numberOfGuests");
-	//var menu;
 	var dishListDiv;
-
-	var oldMenu = [];
-	var uniqueMeny = [];
 
 	this.update = function(){
 		numberOfGuests.html(model.getNumberOfGuests());
 		dishListDiv = container.find("#menuDetails");
+		dishListDiv.html("");
 		//dishListDiv.html("");
 		var menu = model.getFullMenu();
-		
-/*		var menu = [];
-		$.each(oldMenu, function(i, el){
-		    if($.inArray(el, menu) === -1) menu.push(el);
-		});
-		console.log(menu)*/
-
-		if(menu.length > 0){
-			dishListDiv.html("");
-			//menuDishTitle.push(menu[0].title);
-			//menuDishPrice.push(menu[0].pricePerServing);
-			//menuDishImages.push(menu[0].image)
-			//menuDishPrep.push(menu[0].instructions)
-			//for(key in menu){
-			//	oldMenu.push(menu[key].title + '&emsp;' + menu[key].price * model.getNumberOfGuests() + '<br>')
-
-			loop1:
-				for(var i=0; i<menu.length-1; i++){
-				
-			loop2:
-				for (var j=0; j<menu.length-1; j++){
-					console.log(menu[i].title)
-					if(i==j){
-						console.log(i)
-						oldMenu.push(menu[i].title + '&emsp;' + menu[i].price * model.getNumberOfGuests() + '<br>')
-						break loop1;
-					}
-					else if(menu[i].title==menu[j].title){
-						console.log("dublett");
-						break loop1;
-					}else{
-						console.log("ska vara med i menu");
-						oldMenu.push(menu[i].title + '&emsp;' + menu[i].price * model.getNumberOfGuests() + '<br>')
-					}
-				}
-			}
-			console.log(oldMenu);
-			dishListDiv.append(oldMenu);
-				
-				/*uniqueMeny = oldMenu.filter(function(item, pos) {
-				    return oldMenu.indexOf(item) == pos;
-				})
-				for(key in uniqueMeny){
-					dishListDiv.append(uniqueMeny[key]);
-				}
-				}*/
+		//console.log(model.getFullMenu());
+		for(key in menu){
+			//var trunc = "abcdef".substr(0, 3) + "\u2026";
+			dishListDiv.append(menu[key].title + '&emsp;' + menu[key].price * model.getNumberOfGuests() + '<br>')
 		}
-		/*console.log("leng " + menuDishTitle.length)
-		for (key in menuDishTitle){
-			console.log(menuDishTitle[key])
-			//dishListDiv.append("hej");
-			dishListDiv.append(menuDishTitle[key] + '&emsp;' + menuDishPrice * model.getNumberOfGuests() );
-		}*/
-		var price = 0;
-
-		//for(key in menu){
-			//dish = model.getDish(menu[key]);
-			//console.log("menu:");
-			//console.log(menu);
-			/*var pricelist = [];
-			for(var i=0; i< dish.ingredients.length; i++){
-				pricelist = dish.ingredients[i]
-				var num = model.getNumberOfGuests();
-				price += pricelist.price;
-			}
-			//dishListDiv.append(dish.name + '&emsp;' + price * model.getNumberOfGuests() + '<br>');
-			dishList.push(dish.name + '&emsp;' + price * model.getNumberOfGuests() + '<br>');
-
-			price = 0;*/
-		//}
-		//var unique = dishList.filter((v, i, a) => a.indexOf(v) === i);
-		/*for(key in dishList){
-			dishListDiv.append(unique[key]);
-		}
-		dishList = [];*/	
 	}
+	this.update();
 
 	model.addObserver(this);
-
-	//this.update();
 
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");

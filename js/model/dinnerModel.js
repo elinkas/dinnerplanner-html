@@ -103,10 +103,6 @@ var DinnerModel = function() {
 			observers[i].update(obj);
 		}
 	}
-
-	this.removeObserver = function(observer){
-
-	}
  	
 	this.setNumberOfGuests = function(num) {
 		numGuests = num;
@@ -121,33 +117,6 @@ var DinnerModel = function() {
 		return numGuests;
 	}
 
-	//Return the dish that is on the menu for selected type.
-/*	this.getSelectedDish = function(type) {
-		if(type == 'dessert'){
-			for(i=0; i<menu.length;i++){
-				if(menu[i] > 199){
-					var selected = menu[i];
-					console.log(selected);
-				}
-			}
-		}else if(type == 'main dish'){
-			for(i=0; i<menu.length; i++){
-				if(menu[i] < 200 && menu[i] > 99){
-					var selected = menu[i];
-				}
-			}
-		}else{
-			var selected = menu[i];
-		}
-
-		for(key in dishes){
-			if(dishes[key].id == selected) {
-				//console.log(dishes[key]);
-				return dishes[key];
-			}
-		}
-	}*/
-
 	//Return all the dishes on the menu.
 	this.getFullMenu = function() {
 		return menu;
@@ -157,103 +126,32 @@ var DinnerModel = function() {
 		return menuNames;
 	}
 
-	//Return all ingredients for all the dishes on the menu.
-	/*this.getAllIngredients = function() {
-		for(i=0; i<menu.length;i++){
-			var selected = menu[i];
-			for(key in dishes){
-				if(dishes[key].id == selected) {
-					for(key in dishes[key].ingredients){
-					}
-					return dishes[key].ingredients;
-				}
-			}
-		}
-	}*/
-
-	//Return the total price of the menu (all the ingredients multiplied by number of guests).
-	/*this.getTotalMenuPrice = function() {
-		var price = 0;
-		for(item in menu){
-			var selected = menu[item];
-			for(key in dishes){
-				if(dishes[key].id === selected.id) {
-					ingredList=dishes[key].ingredients;
-					for(elem in ingredList){
-						price += ingredList[elem].price;
-					}
-				}
-			}
-		}
-		return price*numGuests;
-	}*/
 
 	this.addDishToMenu = function() {
 		var num = allClickedDishes.length - 1;
 		var dish = allClickedDishes[num];
-		menu.push({'title': dish.title, 'price': dish.pricePerServing, 'image': dish.image, 'prep': dish.instructions});
-		//console.log(menu);
-		notifyObservers();
-
-		/*var dish = allClickedDishes[allClickedDishes.length - 1] ;
-		if(allClickedDishes.length > 2){
-			if(dish.title === allClickedDishes[allClickedDishes.length - 2].title){
-
-			}else{
-		//console.log("dish ")
-		//console.log(dish)
-				menu.push(dish);
-				menuNames.push(dish.title);
-				//console.log("menu names " + menuNames[0]);
-				notifyObservers();
-			}
-		}
-		else{
-			menu.push(dish);
-			menuNames.push(dish.title);
-				//console.log("menu names " + menuNames[0]);
-			notifyObservers();
-		}*/
-	}
-
-	//Remove dish from menu.
-	/*this.removeDishFromMenu = function(id) {
-		for(i=0 ; i<menu.length; i++){
-			if (menu[i] == id){
-				menu.splice(i,1);
-			}
-		}
-		notifyObservers();
-	}*/
-
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned.
-	/**this.getAllDishes = function (type,filter) {
-	return dishes.filter(function(dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			dish.ingredients.forEach(function(ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
+		// if element not in menu
+		if(menu.length < 1){
+			menu.push({'title': dish.title, 'price': dish.pricePerServing, 'image': dish.image, 'prep': dish.instructions});
+		} else {
+			for(key in menu){
+				// if the dish already exists in the menu, exit the function
+				if (menu[key].title === dish.title){
+					console.log("identical");
+					return;
 				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
-			}
+			}// add to menu since it isn't already added in the menu
+			menu.push({'title': dish.title, 'price': dish.pricePerServing, 'image': dish.image, 'prep': dish.instructions});
 		}
-	  	return dish.type == type && found;
-	  });	
-	}  */ 
+		notifyObservers();
+	}
 
 	//main course, side dish, dessert, appetizer, salad, bread, breakfast, soup, beverage, sauce, or drink.
 
 	this.getAllDishes = function (type, filter, callback, errorCallback) {
 		$.ajax( {
 			// SPECIAL CASE if there is no filter.
-		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?type="' + String(type) + '"&query="' + String(filter) + '"',
+		   url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?type=' + String(type) + '&query=' + String(filter),
 		   
 		   headers: {
 		     'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
@@ -276,14 +174,6 @@ var DinnerModel = function() {
 		});
 	}
 
-	//return a dish of specific ID.
-	/*this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
-	}*/
 
 	this.getDish = function(id, callback, errorCallback){
 		$.ajax( {
