@@ -26,7 +26,8 @@ var SidebarView = function (container, model) {
 		//console.log(model.getFullMenu());
 		for(key in menu){
 			//var trunc = "abcdef".substr(0, 3) + "\u2026";
-			dishListDiv.append(menu[key].title + '&emsp;' + menu[key].price * model.getNumberOfGuests() + '<br>')
+			//menu[key].price.toFixed(2);
+			dishListDiv.append(menu[key].title + '&emsp;' + (menu[key].price * model.getNumberOfGuests()).toFixed(2) + '<br>')
 		}
 	}
 	this.update();

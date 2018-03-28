@@ -2,7 +2,8 @@ var totalamount = 0;
 
 var OneDishView = function (container, model) {
 
-	this.update = function(){
+	this.update = function(arg){
+		
 		if(model.getClickedDish() == null){
 			var id = 0;
 		}else{ 
@@ -54,7 +55,7 @@ var OneDishView = function (container, model) {
 
 
 			}, function(){
-				alert("oneDisView");
+				alert("oneDishView");
 			});
 		}
 	}

@@ -7,14 +7,17 @@ var MainViewController = function(view, model) {
 		var e = document.getElementById("dropdown");
 		var type = e.options[e.selectedIndex].text;
 
-		model.setFilter(filter);
-		model.setType(type);
-		//view.update();
+		//model.setFilter(filter);
+		//model.setType(type);
 
-		view.searchResultsDiv.on('click', '.dishButton', function(){
-			var id = this.id.substring(3);
-			model.setClickedDish(id);
-	 		showOneDish();
-		})
+		view.updateSearchResults(type, filter)
+
+
 	});
+
+	view.searchResultsDiv.on('click', '.dishButton', function(){
+		var id = this.id.substring(3);
+		model.setClickedDish(id);
+ 		showOneDish();
+	})
 }

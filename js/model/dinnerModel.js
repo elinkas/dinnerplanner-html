@@ -3,9 +3,6 @@ var menu = []; // i menu lägger vi till objeketen när vi har klickat på "add 
 var menuNames = [];
 var allClickedDishes = []; // i allClieckDishes lägger vi till objekten när vi har klickat på en specifik maträtt
 
-allNames = [];
-allPrices = [];
-
 var ingred = [];
 var menuID = []; 
 var priceList = [];
@@ -79,7 +76,7 @@ var DinnerModel = function() {
 
 	this.setClickedDish = function(id){
 		clickedDish = id;
-		notifyObservers();
+		notifyObservers("clickedDishChanged");
 		return clickedDish;
 	}
 
@@ -186,8 +183,6 @@ var DinnerModel = function() {
 		   	},
 			success: function(data) {
 				allClickedDishes.push(data);
-				allNames.push(data.title);
-				allPrices.push(data.pricePerServing);
 				//console.log("success getting one dish from API")
 				callback(data)
 			},
